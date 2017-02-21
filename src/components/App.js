@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import '../css/App.css'; //custom css
+import { connect } from 'react-redux';
 
 require('../setupBootstrap.js'); //this script gets bootstrap up and running
 
-import Dropdown from './Dropdown.js'; //bring in components
+import DropdownMenu from './DropdownMenu.js'; //bring in components
 import Question from './Question.js';
 import Answer from './Answer.js';
 
@@ -15,10 +16,10 @@ class App extends Component {
         <h1 className="title" >SpeedDrill</h1>
         <div className="row">
           <div className="col-xs-6 col-md-3">
-            <Dropdown label="Category" lis={  ["Addition", "Subtraction", "Multiplication", "Divison"] }/>
+            <DropdownMenu title={this.props.settings.category} label="Category" lis={  ["Addition", "Subtraction", "Multiplication", "Divison"] }/>
           </div>
           <div className="col-xs-6 col-md-3 col-md-offset-6">
-            <Dropdown label="Difficulty" lis={ ["Easy", "Medium", "Hard"] } />
+            <DropdownMenu title={this.props.settings.difficulty} label="Difficulty" lis={ ["Easy", "Medium", "Hard"] } />
           </div>
         </div>
         <Question />
@@ -34,4 +35,10 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    settings: state.settings
+  }
+}
+
+export default connect (mapStateToProps) (App);

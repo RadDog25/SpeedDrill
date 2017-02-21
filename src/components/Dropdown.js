@@ -2,25 +2,28 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import { clickedCategory, clickedDifficulty } from '../actions/settingsActions.js';
 
 class Dropdown extends Component {
+    handleClick() {
+        switch (this.props.label) {
+            case "Category":
+                this.props.clickedCategory(this.props.string);
+                break;
+            case "Difficulty":
+                this.props.clickedDifficulty(this.props.string);
+                break;
+            default:
+                break;
+        }
+    }
     render() {
-        return (
-            <div className="dropdown">
-                <label> {this.props.label} </label>
-                <button className="btn btn-block btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    Dropdown<span className="caret"></span>
-                </button>
-                <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    { //take the lis from props
-                        this.props.lis.map( (string, index) => {
-                            return <li key={ index } ><a href="#"> { string } </a></li>
-                        })
-                    }
-                </ul>
-            </div>
-        );
+        return <li onClick={this.handleClick.bind(this)} key={this.props.index} ><a href="#"> {this.props.string} </a></li>
     }
 }
 
-export default Dropdown;
+function matchDispatchToProps(dispatch) {
+    return bindActionCreators({ clickedCategory: clickedCategory, clickedDifficulty: clickedDifficulty }, dispatch);
+}
+
+export default connect(null, matchDispatchToProps)(Dropdown);

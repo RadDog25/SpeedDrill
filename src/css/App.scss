@@ -7,12 +7,14 @@ body {
             margin-top: 30px;
             text-align: center;
         }
+        /* srink the jumbotron question display for smaller devices like phones */
         @media screen and (max-width: 480px) {
             .jumbotron {
                 margin-top: 20px;
                 margin-bottom: 20px;
             }
         }
+        /* myCorrect and .myIncorrect change the color of the answer buttons depending on the validity of the users answer */
         .myCorrect {
             background-color: #dff0d8;
             color: #468847;   
@@ -20,6 +22,12 @@ body {
         .myIncorrect {
             background-color: #f2dede;
             color: #a94442; 
+        }
+        /* for larger phones and all other devices, add some spacing between the buttons */
+        @media screen and (min-width: 360px) {
+            .btn {
+                margin-bottom: 10px;
+            }
         }
     }
 }

@@ -1,18 +1,25 @@
-body .container .title {
-  font-size: 3em; }
-body .container .jumbotron {
-  margin-top: 30px;
-  text-align: center; }
-@media screen and (max-width: 480px) {
+body .container {
+  /* srink the jumbotron question display for smaller devices like phones */
+  /* myCorrect and .myIncorrect change the color of the answer buttons depending on the validity of the users answer */
+  /* for larger phones and all other devices, add some spacing between the buttons */ }
+  body .container .title {
+    font-size: 3em; }
   body .container .jumbotron {
-    margin-top: 20px;
-    margin-bottom: 20px; } }
-body .container .myCorrect {
-  background-color: #dff0d8;
-  color: #468847; }
-body .container .myIncorrect {
-  background-color: #f2dede;
-  color: #a94442; }
+    margin-top: 30px;
+    text-align: center; }
+  @media screen and (max-width: 480px) {
+    body .container .jumbotron {
+      margin-top: 20px;
+      margin-bottom: 20px; } }
+  body .container .myCorrect {
+    background-color: #dff0d8;
+    color: #468847; }
+  body .container .myIncorrect {
+    background-color: #f2dede;
+    color: #a94442; }
+  @media screen and (min-width: 360px) {
+    body .container .btn {
+      margin-bottom: 10px; } }
 
 /* success bg color is #dff0d8 */
 /* text = #468847 */
