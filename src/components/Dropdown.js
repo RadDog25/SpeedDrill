@@ -12,7 +12,7 @@ class Dropdown extends Component {
                     Dropdown<span className="caret"></span>
                 </button>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    {
+                    { //take the lis from props
                         this.props.lis.map( (string, index) => {
                             return <li key={ index } ><a href="#"> { string } </a></li>
                         })

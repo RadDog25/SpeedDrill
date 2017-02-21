@@ -12,11 +12,11 @@ class Question extends Component {
                         <span className="glyphicon glyphicon-pause" aria-hidden="true"></span>
                     </button>
                     <button type="button" className="btn btn-default btn-md">
-                        <span className="timer">00:00:00</span>
+                        <span className="timer">00:00:00</span> { /* this will show currentAnswerTime */ }
                     </button>
                 </div>
 
-                <h1>3 x 3 = </h1>
+                <h1>3 x 3 = </h1> { /* this will show the question */}
 
             </div>
         );
@@ -24,7 +24,3 @@ class Question extends Component {
 }
 
 export default Question;
-
-/* glyphicon glyphicon-pause */
-
-/* glyphicon glyphicon-play */

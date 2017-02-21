@@ -3,7 +3,7 @@ import '../css/App.css'; //custom css
 
 require('../setupBootstrap.js'); //this script gets bootstrap up and running
 
-import Dropdown from './Dropdown.js';
+import Dropdown from './Dropdown.js'; //bring in components
 import Question from './Question.js';
 import Answer from './Answer.js';
 
@@ -23,7 +23,7 @@ class App extends Component {
         </div>
         <Question />
         <div className="row">
-          {
+          { //make 4 answers (this will map from state later)
             [0, 1, 2, 3].map(i => {
               return <Answer key={i} />
             })
