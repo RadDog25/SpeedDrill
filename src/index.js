@@ -7,6 +7,8 @@ import './css/index.css';
 
 /*note that reducer does not yet exist */
 
+/*
+
 const store = createStore(reducer, {
   category: "Additon",
   difficulty: "Easy",
@@ -20,6 +22,8 @@ const store = createStore(reducer, {
   answers: [2, 3, 4, 5],
   correctAnswer: 4
 });
+
+*/
 
 ReactDOM.render(
   <App />,
