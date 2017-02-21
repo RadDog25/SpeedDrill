@@ -1,0 +1,22 @@
+body .container .title {
+  font-size: 3em; }
+body .container .jumbotron {
+  margin-top: 30px;
+  text-align: center; }
+@media screen and (max-width: 480px) {
+  body .container .jumbotron {
+    margin-top: 20px;
+    margin-bottom: 20px; } }
+body .container .myCorrect {
+  background-color: #dff0d8;
+  color: #468847; }
+body .container .myIncorrect {
+  background-color: #f2dede;
+  color: #a94442; }
+
+/* success color is #dff0d8 */
+/* text = #468847 */
+/* error color is #f2dede */
+/* text is #a94442 */
+
+/*# sourceMappingURL=App.css.map */
