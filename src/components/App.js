@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
-import '../css/App.css';
+import '../css/App.css'; //custom css
 
-/* Get bootstrap up and running with help from jQuery and Tether */
-window.Tether = require('tether');
-window.jQuery = window.$ = require('jquery');
-require('bootstrap/dist/css/bootstrap.css');
-require('bootstrap/dist/js/bootstrap.js');
-require('../myBootstrap.js'); //this file is used to initiate any needed bootstrap elements
-/* end bootstrap stuff */
+require('../setupBootstrap.js'); //this script gets bootstrap up and running
 
 import Dropdown from './Dropdown.js';
 import Question from './Question.js';
 import Answer from './Answer.js';
+
 
 class App extends Component {
   render() {
