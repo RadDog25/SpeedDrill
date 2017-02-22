@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DropDown from './DropDown.js';
+import Dropdown from './Dropdown.js';
 
 
 class DropdownMenu extends Component {
@@ -13,7 +13,7 @@ class DropdownMenu extends Component {
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
                     { //take the lis from props
                         this.props.lis.map( (string, index) => {
-                            return <DropDown key={ index } label={ this.props.label } string={ string } />
+                            return <Dropdown key={ index } label={ this.props.label } string={ string } />
                         })
                     }
                 </ul>

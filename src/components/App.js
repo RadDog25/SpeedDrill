@@ -24,9 +24,9 @@ class App extends Component {
         </div>
         <Question />
         <div className="row">
-          { //make 4 answers (this will map from state later)
-            [0, 1, 2, 3].map(i => {
-              return <Answer key={i} />
+          { //make 4 answers
+            this.props.answers.map( (answer, index) => {
+              return <Answer answer={ answer } key={ index } index={ index } />
             })
           }
         </div>
@@ -37,7 +37,8 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    settings: state.settings
+    settings: state.settings,
+    answers: state.playState.answers,
   }
 }
 

@@ -3,7 +3,6 @@ const initialSettingsState = {
     difficulty: "Easy",
 }
 
-
 let settingsReducer = (state = initialSettingsState, action) => {
     switch (action.type) {
         case "CLICKED_CATEGORY":

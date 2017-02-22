@@ -5,20 +5,16 @@ import { combineReducers, createStore } from 'redux';
 import App from './components/App.js';
 import './css/index.css';
 
-/*note that reducer does not yet exist */
 import settingsReducer from './reducers/settingsReducer.js';
+import playStateReducer from './reducers/playStateReducer.js';
 
 /* combine all reducers in the ./reducers folder */
 const reducer = combineReducers({
   settings: settingsReducer,
+  playState: playStateReducer,
 });
 
 const store = createStore(reducer);
-
-/* this listener will just log any changes to the console for dev purposes */
-store.subscribe(() => {
-  console.log("state change", store.getState());
-});
 
 ReactDOM.render(
   <Provider store={store}>
