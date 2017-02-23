@@ -75,6 +75,8 @@ export function getNumbers(category, difficulty) {
         case "÷":
             return getAnswers("÷", x * y, x, y, max);
         default:
+        //default should never fire
+            console.log(symbol, "is not a valid category");
             return "not a valid category";
     }
 }

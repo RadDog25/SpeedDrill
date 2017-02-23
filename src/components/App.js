@@ -24,7 +24,7 @@ class App extends Component {
           </h1>
         <div className="row">
           <div className="col-xs-6 col-md-3">
-            <DropdownMenu title={this.props.settings.category} label="Category" lis={["Addition", "Subtraction", "Multiplication", "Divison", "Random"]} />
+            <DropdownMenu title={this.props.settings.category} label="Category" lis={["Addition", "Subtraction", "Multiplication", "Division", "Random"]} />
           </div>
           <div className="col-xs-6 col-md-3">
             <DropdownMenu title={this.props.settings.difficulty} label="Difficulty" lis={["Easy", "Medium", "Hard"]} />
