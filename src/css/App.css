@@ -11,15 +11,20 @@ body .container {
     transition: background-color ease-in-out 0.25s; }
   @media screen and (max-width: 480px) {
     body .container .jumbotron {
-      margin-top: 20px;
-      margin-bottom: 20px; } }
+      margin-top: 15px;
+      margin-bottom: 15px; } }
   body .container .alert {
-    font-size: 1.5em;
+    font-size: 1.2em;
     padding: 5px;
     border-radius: 20px;
-    text-align: center; }
+    text-align: center;
+    width: 70px;
+    display: inline-block;
+    margin-right: 10px; }
     body .container .alert .glyphicon {
       float: right; }
+  body .container .alert-info {
+    width: 90px; }
   body .container .myCorrect {
     background-color: #dff0d8;
     color: #468847; }

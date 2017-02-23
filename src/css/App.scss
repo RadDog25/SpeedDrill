@@ -11,19 +11,25 @@ body {
         /* srink the jumbotron question display for smaller devices like phones */
         @media screen and (max-width: 480px) {
             .jumbotron {
-                margin-top: 20px;
-                margin-bottom: 20px;
+                margin-top: 15px;
+                margin-bottom: 15px;
             }
         }
         /*modify the alert bootstrap class */
         .alert {
-            font-size: 1.5em;
+            font-size: 1.2em;
             padding: 5px;
             border-radius: 20px;
             text-align: center;
+            width: 70px;
+            display: inline-block;
+            margin-right: 10px;
             .glyphicon {
                 float: right;
             }
+        }
+        .alert-info {
+            width: 90px;
         }
         /* myCorrect and .myIncorrect change the color of the answer buttons and question jumbotron depending on the validity of the users answer */
         .myCorrect {

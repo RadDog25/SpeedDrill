@@ -19,18 +19,17 @@ class App extends Component {
           <div className="col-xs-6 col-md-3">
             <DropdownMenu title={this.props.settings.category} label="Category" lis={["Addition", "Subtraction", "Multiplication", "Divison"]} />
           </div>
-          <div className="col-xs-6 col-md-3 col-md-offset-6">
+          <div className="col-xs-6 col-md-3">
             <DropdownMenu title={this.props.settings.difficulty} label="Difficulty" lis={["Easy", "Medium", "Hard"]} />
           </div>
         </div>
         <Question />
         {/* alert needs text, alert and glyphicon props  */}
         <div className="row">
-          <div className="col-xs-6 col-md-2">
-            <Alert alert={"success"} glyphicon={"ok"} text={this.props.history.pastCorrectAnswers} />
-          </div>
-          <div className="col-xs-6 col-md-2">
-            <Alert alert={"danger"} glyphicon={"remove"} text={this.props.history.pastIncorrectAnswers} />
+          <div className="col-xs-12">
+            <Alert alert="success" glyphicon="ok" text={this.props.history.pastCorrectAnswers} />
+            <Alert alert="danger" glyphicon="remove" text={this.props.history.pastIncorrectAnswers} />
+            <Alert alert="info" glyphicon="" text={`${this.props.history.pastCorrectAnswers + this.props.history.pastIncorrectAnswers} / 20`} />
           </div>
         </div>
         <div className="row">

@@ -10,7 +10,7 @@ class Answer extends Component {
         if (!this.props.paused && !this.props.transitioning) {
             this.props.questionAnswered(this.props.index, this.props.index === this.props.correctIndex, this.props.currentAnswerTime);
             //have the transitionCompleted function call itself after a delay
-            setTimeout( () => {
+            setTimeout(() => {
                 this.props.transitionCompleted(this.props.category, this.props.difficulty);
             }, 1000);
         }
@@ -18,7 +18,9 @@ class Answer extends Component {
     render() {
         return (
             <div className="col-xs-12 col-md-3">
-                <button onClick={this.handleClick.bind(this)} type="button" className={`btn btn-block btn-lg btn-default ${this.props.buttonStyles[this.props.index]}`}>
+                <button onClick={this.handleClick.bind(this)} type="button"
+                //if the game is paused then change the style of the answer buttons to be disabled
+                    className={`btn btn-block btn-lg btn-default ${this.props.paused ? "disabled" : ""} ${this.props.buttonStyles[this.props.index]}`}>
                     {this.props.answer}
                 </button>
             </div>
