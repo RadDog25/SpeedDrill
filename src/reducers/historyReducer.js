@@ -10,7 +10,7 @@ let historyReducer = (state = initialHistoryState, action) => {
             let numberAnswered = state.pastCorrectAnswers + state.pastIncorrectAnswers;
             state = action.payload.isCorrect ? {
                 ...state,
-                //the formula below calculates the new average answer time // basically just total time divided by total answers //
+                // the formula below calculates the new average answer time // basically just total time divided by total answers //
                 averageAnswerTime: (((state.averageAnswerTime) * (numberAnswered) + action.payload.currentAnswerTime) /
                     (numberAnswered + 1)),
                 // incorrect answers do not affect the averageAnswerTime //

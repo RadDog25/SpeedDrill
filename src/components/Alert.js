@@ -5,8 +5,11 @@ import { clickedSetting } from '../actions/settingsActions.js';
 
 class Alert extends Component {
     render() {
-        return(
-            <div className={`alert alert-${this.props.type}`} role="alert">{ this.props.text }</div>
+        return (
+            <div className={`alert alert-${this.props.alert}`} role="alert">
+                {this.props.text}
+                <span className={`glyphicon glyphicon-${this.props.glyphicon}`} aria-hidden="true"></span><span className="sr-only">Error:</span>
+            </div>
         );
     }
 }

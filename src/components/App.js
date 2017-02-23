@@ -7,6 +7,7 @@ require('../setupBootstrap.js'); //this script gets bootstrap up and running
 import DropdownMenu from './DropdownMenu.js'; //bring in components
 import Question from './Question.js';
 import Answer from './Answer.js';
+import Alert from './Alert.js';
 
 
 class App extends Component {
@@ -16,17 +17,26 @@ class App extends Component {
         <h1 className="title" >SpeedDrill</h1>
         <div className="row">
           <div className="col-xs-6 col-md-3">
-            <DropdownMenu title={this.props.settings.category} label="Category" lis={  ["Addition", "Subtraction", "Multiplication", "Divison"] }/>
+            <DropdownMenu title={this.props.settings.category} label="Category" lis={["Addition", "Subtraction", "Multiplication", "Divison"]} />
           </div>
           <div className="col-xs-6 col-md-3 col-md-offset-6">
-            <DropdownMenu title={this.props.settings.difficulty} label="Difficulty" lis={ ["Easy", "Medium", "Hard"] } />
+            <DropdownMenu title={this.props.settings.difficulty} label="Difficulty" lis={["Easy", "Medium", "Hard"]} />
           </div>
         </div>
         <Question />
+        {/* alert needs text, alert and glyphicon props  */}
+        <div className="row">
+          <div className="col-xs-6 col-md-2">
+            <Alert alert={"success"} glyphicon={"ok"} text={this.props.history.pastCorrectAnswers} />
+          </div>
+          <div className="col-xs-6 col-md-2">
+            <Alert alert={"danger"} glyphicon={"remove"} text={this.props.history.pastIncorrectAnswers} />
+          </div>
+        </div>
         <div className="row">
           { //make 4 answers
-            this.props.answers.map( (answer, index) => {
-              return <Answer answer={ answer } key={ index } index={ index } />
+            this.props.answers.map((answer, index) => {
+              return <Answer answer={answer} key={index} index={index} />
             })
           }
         </div>
@@ -39,7 +49,8 @@ function mapStateToProps(state) {
   return {
     settings: state.settings,
     answers: state.playState.answers,
+    history: state.history,
   }
 }
 
-export default connect (mapStateToProps) (App);
+export default connect(mapStateToProps)(App);

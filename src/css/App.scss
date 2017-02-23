@@ -15,6 +15,16 @@ body {
                 margin-bottom: 20px;
             }
         }
+        /*modify the alert bootstrap class */
+        .alert {
+            font-size: 1.5em;
+            padding: 5px;
+            border-radius: 20px;
+            text-align: center;
+            .glyphicon {
+                float: right;
+            }
+        }
         /* myCorrect and .myIncorrect change the color of the answer buttons and question jumbotron depending on the validity of the users answer */
         .myCorrect {
             background-color: #dff0d8;
