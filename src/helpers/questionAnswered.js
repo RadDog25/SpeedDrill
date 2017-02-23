@@ -13,11 +13,11 @@ export function getStyles(correctIndex, userIndex) {
 //used in playStateReducer
 export function getTimerStyle({ isCorrect, currentAnswerTime, averageAnswerTime }) {
     let target = 10; //for the first question the target is 10s
-    if(!isCorrect) {
+    if (!isCorrect) {
         return ""; //if not correct dont change any styling
     }
-    if(averageAnswerTime) { //if averageAnswerTime is not zero then proceed normally
-        return  currentAnswerTime < averageAnswerTime ? "myCorrect" : "myIncorrect";
+    if (averageAnswerTime) { //if averageAnswerTime is not zero then proceed normally
+        return currentAnswerTime < averageAnswerTime ? "myCorrect" : "myIncorrect";
     } //otherwise compare to target for first question;
     return currentAnswerTime < target ? "myCorrect" : "myIncorrect";
 }
@@ -30,7 +30,7 @@ export function getNumbers(category, difficulty) {
         "Subtraction": "-",
         "Multiplication": "×",
         "Division": "÷",
-        "Random": ["+", "-", "×", "÷"][ Math.floor( 4 * Math.random()) ], //this line maps "Random" to a random operator
+        "Random": ["+", "-", "×", "÷"][Math.floor(4 * Math.random())], //this line maps "Random" to a random operator
     }[category];
 
     let max = {
@@ -66,13 +66,15 @@ export function getNumbers(category, difficulty) {
         case "+":
             return getAnswers("+", x, y, x + y, 2 * max);
         case "-":
-        //swap x and y if they would yield negative numbers
+            //swap x and y if they would yield negative numbers
             if (x < y) { [x, y] = [y, x] };
             return getAnswers("-", x, y, x - y, max);
         case "×":
             return getAnswers("×", x, y, x * y, Math.max(x, y) * Math.max(x, y));
-            //the case below handles division
-        default:
+        //the case below handles division
+        case "÷":
             return getAnswers("÷", x * y, x, y, max);
+        default:
+            return "not a valid category";
     }
 }
