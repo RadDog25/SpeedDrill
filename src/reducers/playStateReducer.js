@@ -21,13 +21,12 @@ let playStateReducer = (state = initialPlayState, action) => {
             state = { ...state, currentAnswerTime: action.payload.currentAnswerTime + action.payload.increment }
             break
         case "CLICKED_ANSWER":
-            console.log("CLICKED_ANSWER = ", action.payload);
-            let correct = state.correctIndex === action.payload;
+            console.log("CLICKED_ANSWER = ", action.payload.index);
             state = {
                 ...state,
                 transitioning: true,
-                questionStyle: correct ? "myCorrect" : "myIncorrect",
-                buttonStyles: getStyles(state.correctIndex, action.payload),
+                questionStyle: action.payload.isCorrect ? "myCorrect" : "myIncorrect",
+                buttonStyles: getStyles(state.correctIndex, action.payload.index),
             }
             break;
         case "TRANSITION_COMPLETED":

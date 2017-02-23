@@ -6,9 +6,9 @@ import { questionAnswered, transitionCompleted } from '../actions/playStateActio
 
 class Answer extends Component {
     handleClick() {
-        /* only accept answer if game state is not paused */ //should add a tooltip for that
+        /* only accept answer if game state is not paused or transitioning */ //should add a tooltip for that
         if (!this.props.paused && !this.props.transitioning) {
-            this.props.questionAnswered(this.props.index);
+            this.props.questionAnswered(this.props.index, this.props.index === this.props.correctIndex, this.props.currentAnswerTime);
             //have the transitionCompleted function call itself after a delay
             setTimeout( () => {
                 this.props.transitionCompleted(this.props.category, this.props.difficulty);
@@ -33,6 +33,9 @@ let mapStateToProps = (state) => {
         buttonStyles: state.playState.buttonStyles,
         category: state.settings.category,
         difficulty: state.settings.difficulty,
+        //the two below are for the historyReducer
+        correctIndex: state.playState.correctIndex,
+        currentAnswerTime: state.playState.currentAnswerTime,
     }
 }
 
