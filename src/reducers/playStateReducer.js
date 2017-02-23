@@ -1,4 +1,4 @@
-import { getStyles, getNumbers } from '../helpers/questionAnswered.js';
+import { getStyles, getTimerStyle, getNumbers } from '../helpers/questionAnswered.js';
 
 const initialPlayState = {
     currentAnswerTime: 0,
@@ -6,10 +6,12 @@ const initialPlayState = {
     transitioning: false,
     question: "2 + 2 = ",
     questionStyle: "",
+    timerStyle: "",
     answers: [2, 3, 4, 5],
     buttonStyles: ["", "", "", ""],
     correctIndex: 2,
     correctAnswer: 4,
+    isGameOver: false,
 }
 
 let playStateReducer = (state = initialPlayState, action) => {
@@ -21,11 +23,11 @@ let playStateReducer = (state = initialPlayState, action) => {
             state = { ...state, currentAnswerTime: action.payload.currentAnswerTime + action.payload.increment }
             break
         case "CLICKED_ANSWER":
-            console.log("CLICKED_ANSWER = ", action.payload.index);
             state = {
                 ...state,
                 transitioning: true,
                 questionStyle: action.payload.isCorrect ? "myCorrect" : "myIncorrect",
+                timerStyle: getTimerStyle(action.payload),
                 buttonStyles: getStyles(state.correctIndex, action.payload.index),
             }
             break;
@@ -37,12 +39,25 @@ let playStateReducer = (state = initialPlayState, action) => {
                 transitioning: false,
                 question: question,
                 questionStyle: "",
+                timerStyle: "",
                 answers: answers,
                 buttonStyles: ["", "", "", ""],
                 correctIndex: correctIndex,
                 correctAnswer: correctAnswer,
             }
-
+            break;
+        case "NEW_SESSION":
+            state = {
+                ...state,
+                currentAnswerTime: 0,
+                isGameOver: false,
+            }
+            break;
+        case "GAME_OVER":
+            state = {
+                ...state,
+                isGameOver: true,
+            }
             break;
     }
     return state;

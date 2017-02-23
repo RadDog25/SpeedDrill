@@ -7,17 +7,24 @@ require('../setupBootstrap.js'); //this script gets bootstrap up and running
 import DropdownMenu from './DropdownMenu.js'; //bring in components
 import Question from './Question.js';
 import Answer from './Answer.js';
-import Alert from './Alert.js';
+import ScoreAlert from './ScoreAlert.js';
+import Modal from './Modal.js';
 
 
 class App extends Component {
   render() {
     return (
       <div className="container">
-        <h1 className="title" >SpeedDrill</h1>
+
+        <Modal />
+
+        <h1 className="title" >
+          <span className="glyphicon glyphicon-flash" aria-hidden="true"></span>
+          SpeedDrill
+          </h1>
         <div className="row">
           <div className="col-xs-6 col-md-3">
-            <DropdownMenu title={this.props.settings.category} label="Category" lis={["Addition", "Subtraction", "Multiplication", "Divison"]} />
+            <DropdownMenu title={this.props.settings.category} label="Category" lis={["Addition", "Subtraction", "Multiplication", "Divison", "Random"]} />
           </div>
           <div className="col-xs-6 col-md-3">
             <DropdownMenu title={this.props.settings.difficulty} label="Difficulty" lis={["Easy", "Medium", "Hard"]} />
@@ -27,9 +34,9 @@ class App extends Component {
         {/* alert needs text, alert and glyphicon props  */}
         <div className="row">
           <div className="col-xs-12">
-            <Alert alert="success" glyphicon="ok" text={this.props.history.pastCorrectAnswers} />
-            <Alert alert="danger" glyphicon="remove" text={this.props.history.pastIncorrectAnswers} />
-            <Alert alert="info" glyphicon="" text={`${this.props.history.pastCorrectAnswers + this.props.history.pastIncorrectAnswers} / 20`} />
+            <ScoreAlert alert="success" glyphicon="ok" text={this.props.history.pastCorrectAnswers} />
+            <ScoreAlert alert="danger" glyphicon="remove" text={this.props.history.pastIncorrectAnswers} />
+            <ScoreAlert alert="info" glyphicon="" text={`${this.props.history.pastCorrectAnswers + this.props.history.pastIncorrectAnswers} / 20`} />
           </div>
         </div>
         <div className="row">

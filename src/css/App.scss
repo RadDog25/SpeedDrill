@@ -1,12 +1,31 @@
 body {
     .container {
+        .modal-body {
+            td {
+                font-size: 1.5em;
+                padding: 10px;  
+            }
+            .goodResult {
+                color: #468847;
+            }
+            .badResult {
+                color: #a94442;
+            }
+        }
         .title {
             font-size: 3em;
         }
         .jumbotron {
             margin-top: 30px;
-            text-align: center;
             transition: background-color ease-in-out 0.25s;
+            text-align: center;
+            .timer {
+                width: 100px;
+                cursor: auto;
+            }
+            .glyphicon-screenshot {
+                float: left;
+            }
         }
         /* srink the jumbotron question display for smaller devices like phones */
         @media screen and (max-width: 480px) {
@@ -16,7 +35,7 @@ body {
             }
         }
         /*modify the alert bootstrap class */
-        .alert {
+        .scoreAlert {
             font-size: 1.2em;
             padding: 5px;
             border-radius: 20px;
@@ -45,7 +64,7 @@ body {
         }
         /* for larger phones and all other devices, add some spacing between the buttons */
         @media screen and (min-width: 360px) {
-            .btn {
+            .answer-btn {
                 margin-bottom: 10px;
             }
         }

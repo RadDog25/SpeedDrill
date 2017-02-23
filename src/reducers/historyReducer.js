@@ -19,7 +19,9 @@ let historyReducer = (state = initialHistoryState, action) => {
                     ...state,
                     pastIncorrectAnswers: state.pastIncorrectAnswers + 1,
                 }
-            console.log("history state = ", state);
+            break;
+        case "NEW_SESSION":
+            state = Object.assign({}, state, initialHistoryState);
             break;
     }
     return state;

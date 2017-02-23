@@ -3,17 +3,29 @@ body .container {
   /*modify the alert bootstrap class */
   /* myCorrect and .myIncorrect change the color of the answer buttons and question jumbotron depending on the validity of the users answer */
   /* for larger phones and all other devices, add some spacing between the buttons */ }
+  body .container .modal-body td {
+    font-size: 1.5em;
+    padding: 10px; }
+  body .container .modal-body .goodResult {
+    color: #468847; }
+  body .container .modal-body .badResult {
+    color: #a94442; }
   body .container .title {
     font-size: 3em; }
   body .container .jumbotron {
     margin-top: 30px;
-    text-align: center;
-    transition: background-color ease-in-out 0.25s; }
+    transition: background-color ease-in-out 0.25s;
+    text-align: center; }
+    body .container .jumbotron .timer {
+      width: 100px;
+      cursor: auto; }
+    body .container .jumbotron .glyphicon-screenshot {
+      float: left; }
   @media screen and (max-width: 480px) {
     body .container .jumbotron {
       margin-top: 15px;
       margin-bottom: 15px; } }
-  body .container .alert {
+  body .container .scoreAlert {
     font-size: 1.2em;
     padding: 5px;
     border-radius: 20px;
@@ -21,7 +33,7 @@ body .container {
     width: 70px;
     display: inline-block;
     margin-right: 10px; }
-    body .container .alert .glyphicon {
+    body .container .scoreAlert .glyphicon {
       float: right; }
   body .container .alert-info {
     width: 90px; }
@@ -34,7 +46,7 @@ body .container {
   body .container .btn {
     transition: background-color ease-in-out 0.25s; }
   @media screen and (min-width: 360px) {
-    body .container .btn {
+    body .container .answer-btn {
       margin-bottom: 10px; } }
 
 /* success bg color is #dff0d8 */

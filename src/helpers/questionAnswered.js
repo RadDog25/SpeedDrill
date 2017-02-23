@@ -1,4 +1,6 @@
+//used in playStateReducer
 export function getStyles(correctIndex, userIndex) {
+    /* make the users answer blink red if incorrect and blink the correct answer green */
     let newButtonStyles = ["", "", "", ""];
     if (correctIndex !== userIndex) {
         newButtonStyles[userIndex] = "myIncorrect";
@@ -8,13 +10,27 @@ export function getStyles(correctIndex, userIndex) {
     return newButtonStyles;
 }
 
+//used in playStateReducer
+export function getTimerStyle({ isCorrect, currentAnswerTime, averageAnswerTime }) {
+    let target = 10; //for the first question the target is 10s
+    if(!isCorrect) {
+        return ""; //if not correct dont change any styling
+    }
+    if(averageAnswerTime) { //if averageAnswerTime is not zero then proceed normally
+        return  currentAnswerTime < averageAnswerTime ? "myCorrect" : "myIncorrect";
+    } //otherwise compare to target for first question;
+    return currentAnswerTime < target ? "myCorrect" : "myIncorrect";
+}
+
+//used in playStateReducer
 export function getNumbers(category, difficulty) {
     //map our category and difficulty to practical values
     let symbol = {
         "Addition": "+",
         "Subtraction": "-",
         "Multiplication": "x",
-        "Division": "/"
+        "Division": "/",
+        "Random": ["+", "-", "x", "/"][ Math.floor( 4 * Math.random()) ], //this line maps "Random" to a random operator
     }[category];
 
     let max = {
@@ -54,10 +70,9 @@ export function getNumbers(category, difficulty) {
             if (x < y) { [x, y] = [y, x] };
             return getAnswers("-", x, y, x - y, max);
         case "x":
-            return getAnswers("x", x, y, x * y, max * max);
+            return getAnswers("x", x, y, x * y, Math.max(x, y) * Math.max(x, y));
             //the case below handles division
         default:
             return getAnswers("/", x * y, x, y, max);
     }
-
 }
