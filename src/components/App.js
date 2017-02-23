@@ -20,7 +20,7 @@ class App extends Component {
 
         <h1 className="title" >
           <span className="glyphicon glyphicon-flash" aria-hidden="true"></span>
-          SpeedDrill
+          Speed Drill
           </h1>
         <div className="row">
           <div className="col-xs-6 col-md-3">

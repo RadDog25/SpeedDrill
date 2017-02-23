@@ -10,7 +10,6 @@ var $ = require('jquery'); //need jquery to handle bootrap modals, please forgiv
 class Answer extends Component {
     handleClick() {
         /* only accept answer if game state is not paused or transitioning */ //should add a tooltip for that
-        console.log("gameOver: ", this.props.isGameOver);
         if ( !this.props.paused && !this.props.transitioning /* && !this.props.isGameOver {{{ this isn't really needed as this is a static modal }}}*/ ) {
             this.props.questionAnswered(
                 this.props.index,
@@ -20,7 +19,7 @@ class Answer extends Component {
             );
             //have the transitionCompleted function call itself after a delay
             setTimeout(() => {
-                if(this.props.numQuestionsAnswered >= 20) {
+                if(this.props.numQuestionsAnswered >= 20) { //change back to 2 for testing
                     this.props.gameOver();
                     $('#myModal').modal({ show: true}); //lol jQuery in React
                 }

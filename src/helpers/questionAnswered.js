@@ -28,9 +28,9 @@ export function getNumbers(category, difficulty) {
     let symbol = {
         "Addition": "+",
         "Subtraction": "-",
-        "Multiplication": "x",
-        "Division": "/",
-        "Random": ["+", "-", "x", "/"][ Math.floor( 4 * Math.random()) ], //this line maps "Random" to a random operator
+        "Multiplication": "×",
+        "Division": "÷",
+        "Random": ["+", "-", "×", "÷"][ Math.floor( 4 * Math.random()) ], //this line maps "Random" to a random operator
     }[category];
 
     let max = {
@@ -69,10 +69,10 @@ export function getNumbers(category, difficulty) {
         //swap x and y if they would yield negative numbers
             if (x < y) { [x, y] = [y, x] };
             return getAnswers("-", x, y, x - y, max);
-        case "x":
-            return getAnswers("x", x, y, x * y, Math.max(x, y) * Math.max(x, y));
+        case "×":
+            return getAnswers("×", x, y, x * y, Math.max(x, y) * Math.max(x, y));
             //the case below handles division
         default:
-            return getAnswers("/", x * y, x, y, max);
+            return getAnswers("÷", x * y, x, y, max);
     }
 }

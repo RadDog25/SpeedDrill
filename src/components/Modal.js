@@ -15,7 +15,10 @@ class Modal extends Component {
           <div className="modal-content">
             <div className="modal-header"> {/* reset quiz if the close button is clicked */}
               <button onClick={this.handleClick.bind(this)} type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h2 className="modal-title" id="myModalLabel">Session Complete!</h2>
+              <h3 className="modal-title" id="myModalLabel">
+                    <span className="glyphicon glyphicon-check" aria-hidden="true"></span>
+                    <span>Session Complete!</span>
+              </h3>
             </div>
 
             <div className="modal-body">

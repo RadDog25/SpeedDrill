@@ -5,8 +5,7 @@ import { connect } from 'react-redux';
 import { clickedSetting } from '../actions/settingsActions.js';
 
 class Dropdown extends Component {
-    handleClick() {
-        //trigger clicked setting action
+    handleClick() { //trigger clicked setting action
         this.props.clickedSetting(this.props.label, this.props.string);
     }
     render() {

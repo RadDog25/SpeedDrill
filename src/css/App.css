@@ -1,8 +1,13 @@
+@import url("https://fonts.googleapis.com/css?family=Lobster");
 body .container {
   /* srink the jumbotron question display for smaller devices like phones */
   /*modify the alert bootstrap class */
   /* myCorrect and .myIncorrect change the color of the answer buttons and question jumbotron depending on the validity of the users answer */
   /* for larger phones and all other devices, add some spacing between the buttons */ }
+  body .container .modal-header .modal-title {
+    text-align: center; }
+    body .container .modal-header .modal-title .glyphicon-check {
+      float: left; }
   body .container .modal-body td {
     font-size: 1.5em;
     padding: 10px; }
@@ -11,7 +16,8 @@ body .container {
   body .container .modal-body .badResult {
     color: #a94442; }
   body .container .title {
-    font-size: 3em; }
+    font-size: 3em;
+    font-family: 'Lobster', cursive; }
   body .container .jumbotron {
     margin-top: 30px;
     transition: background-color ease-in-out 0.25s;
@@ -23,8 +29,8 @@ body .container {
       float: left; }
   @media screen and (max-width: 480px) {
     body .container .jumbotron {
-      margin-top: 15px;
-      margin-bottom: 15px; } }
+      margin-top: 12px;
+      margin-bottom: 12px; } }
   body .container .scoreAlert {
     font-size: 1.2em;
     padding: 5px;

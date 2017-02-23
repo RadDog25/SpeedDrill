@@ -1,5 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
 body {
     .container {
+        .modal-header {
+            .modal-title {
+                text-align: center;
+                .glyphicon-check {
+                    float: left;
+                }
+            }
+        }
         .modal-body {
             td {
                 font-size: 1.5em;
@@ -14,6 +24,7 @@ body {
         }
         .title {
             font-size: 3em;
+            font-family: 'Lobster', cursive;
         }
         .jumbotron {
             margin-top: 30px;
@@ -30,8 +41,8 @@ body {
         /* srink the jumbotron question display for smaller devices like phones */
         @media screen and (max-width: 480px) {
             .jumbotron {
-                margin-top: 15px;
-                margin-bottom: 15px;
+                margin-top: 12px;
+                margin-bottom: 12px;
             }
         }
         /*modify the alert bootstrap class */

@@ -12,4 +12,3 @@ $(document).ready( function () {
     $('[data-toggle="tooltip"]').tooltip({ container: 'body' });
     $('#myModal').modal({ backdrop: "static", keyboard: false, show: false}); //setup my modal to be static as things will break otherwise
 });
-
