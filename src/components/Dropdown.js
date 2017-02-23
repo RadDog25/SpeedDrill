@@ -6,6 +6,7 @@ import { clickedSetting } from '../actions/settingsActions.js';
 
 class Dropdown extends Component {
     handleClick() {
+        //trigger clicked setting action
         this.props.clickedSetting(this.props.label, this.props.string);
     }
     render() {

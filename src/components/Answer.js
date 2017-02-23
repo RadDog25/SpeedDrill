@@ -11,7 +11,7 @@ class Answer extends Component {
     handleClick() {
         /* only accept answer if game state is not paused or transitioning */ //should add a tooltip for that
         console.log("gameOver: ", this.props.isGameOver);
-        if ( !this.props.paused && !this.props.transitioning /* && !this.props.isGameOver */ ) {
+        if ( !this.props.paused && !this.props.transitioning /* && !this.props.isGameOver {{{ this isn't really needed as this is a static modal }}}*/ ) {
             this.props.questionAnswered(
                 this.props.index,
                 this.props.index === this.props.correctIndex,

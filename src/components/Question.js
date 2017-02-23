@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 import { clickedPause, updateTimer } from '../actions/playStateActions.js';
 
-
 class Question extends Component {
     componentDidMount() {
         /* after timer mounts, increment the clock every 1 second as long as the game is not paused */

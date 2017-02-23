@@ -31,7 +31,7 @@ class App extends Component {
           </div>
         </div>
         <Question />
-        {/* alert needs text, alert and glyphicon props  */}
+        {/* alert needs text, alert class and glyphicon class props  */}
         <div className="row">
           <div className="col-xs-12">
             <ScoreAlert alert="success" glyphicon="ok" text={this.props.history.pastCorrectAnswers} />

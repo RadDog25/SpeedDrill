@@ -22,7 +22,7 @@ export function getTimerStyle({ isCorrect, currentAnswerTime, averageAnswerTime 
     return currentAnswerTime < target ? "myCorrect" : "myIncorrect";
 }
 
-//used in playStateReducer
+//used in playStateReducer, brains behind question generation here
 export function getNumbers(category, difficulty) {
     //map our category and difficulty to practical values
     let symbol = {

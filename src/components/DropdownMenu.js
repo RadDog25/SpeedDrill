@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Dropdown from './Dropdown.js';
 
-
 class DropdownMenu extends Component {
     render() {
         return (
