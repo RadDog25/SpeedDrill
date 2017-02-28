@@ -16,6 +16,8 @@ class Answer extends Component {
                 this.props.index === this.props.correctIndex,
                 this.props.currentAnswerTime,
                 this.props.averageAnswerTime,
+                this.props.category,
+                this.props.difficulty,
             );
             //have the transitionCompleted function call itself after a delay
             setTimeout(() => {
@@ -46,6 +48,7 @@ const mapStateToProps = (state) => {
         paused: state.playState.paused,
         transitioning: state.playState.transitioning,
         buttonStyles: state.playState.buttonStyles,
+        //questionAnswered action needs the settings for the history log
         category: state.settings.category,
         difficulty: state.settings.difficulty,
         averageAnswerTime: state.history.averageAnswerTime,

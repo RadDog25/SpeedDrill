@@ -16,7 +16,7 @@ export function updateTimer(currentAnswerTime, increment) {
 }
 
 /* this action also is relevant to the historyReducer and so it needs to provide payload for that as well */
-export function questionAnswered(index, isCorrect, currentAnswerTime, averageAnswerTime) {
+export function questionAnswered(index, isCorrect, currentAnswerTime, averageAnswerTime, category, difficulty) {
     return {
         type: "CLICKED_ANSWER",
         payload: {
@@ -24,6 +24,8 @@ export function questionAnswered(index, isCorrect, currentAnswerTime, averageAns
             isCorrect: isCorrect,
             currentAnswerTime: currentAnswerTime,
             averageAnswerTime: averageAnswerTime,
+            category: category,
+            difficulty: difficulty,
         }
     }
 }
