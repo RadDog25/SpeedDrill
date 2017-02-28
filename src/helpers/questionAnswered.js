@@ -12,7 +12,7 @@ export function getStyles(correctIndex, userIndex) {
 
 //used in playStateReducer
 export function getTimerStyle({ isCorrect, currentAnswerTime, averageAnswerTime }) {
-    let target = 10; //for the first question the target is 10s
+    const target = 10; //for the first question the target is 10s
     if (!isCorrect) {
         return ""; //if not correct dont change any styling
     }
@@ -23,9 +23,9 @@ export function getTimerStyle({ isCorrect, currentAnswerTime, averageAnswerTime 
 }
 
 //used in playStateReducer, brains behind question generation here
-export function getNumbers(category, difficulty) {
+export function getNumbers(category, difficulty, oldQuestion) {
     //map our category and difficulty to practical values
-    let symbol = {
+    const symbol = {
         "Addition": "+",
         "Subtraction": "-",
         "Multiplication": "×",
@@ -33,14 +33,18 @@ export function getNumbers(category, difficulty) {
         "Random": ["+", "-", "×", "÷"][Math.floor(4 * Math.random())], //this line maps "Random" to a random operator
     }[category];
 
-    let max = {
+    const max = {
         "Easy": 6,
         "Medium": 10,
         "Hard": 16
     }[difficulty];
 
     //this function generates an array of 4, one number of which is the correct one
-    let getAnswers = (symbol, x, y, correctAnswer, max) => {
+    const getAnswers = (symbol, x, y, correctAnswer, max) => {
+        const newQuestion = `${x} ${symbol} ${y} =`;
+        if (newQuestion === oldQuestion) { //if the old question is the same as the new question then recurse
+            return getNumbers(category, difficulty, oldQuestion);
+        }
         let answers = [];
         let num = 0; //keep pushing random nums onto our array until the length is 4, then insert the correct answer to a random index
         while (answers.length < 4) {
@@ -49,19 +53,19 @@ export function getNumbers(category, difficulty) {
                 answers.push(num);
             }
         }
-        let correctIndex = Math.floor(Math.random() * 4);
+        const correctIndex = Math.floor(Math.random() * 4);
         answers[correctIndex] = correctAnswer;
         //return the correct index and the answers
         return {
-            question: `${x} ${symbol} ${y} =`,
+            question: newQuestion,
             answers: answers,
             correctIndex: correctIndex,
             correctAnswer: correctAnswer,
         }
     }
 
-    /* x ? y = z except for divison where z / x = y */
     let x = Math.floor((max - 1) * Math.random()) + 1, y = Math.floor((max - 1) * Math.random()) + 1;
+    /* x ? y = z except for divison where z / x = y */
     switch (symbol) {
         case "+":
             return getAnswers("+", x, y, x + y, 2 * max);
@@ -75,8 +79,23 @@ export function getNumbers(category, difficulty) {
         case "÷":
             return getAnswers("÷", x * y, x, y, max);
         default:
-        //default should never fire
+            //default should never fire
             console.log(symbol, "is not a valid category");
             return "not a valid category";
     }
+}
+
+export function getHistory(state, { isCorrect, currentAnswerTime }) {
+    const { averageAnswerTime, pastCorrectAnswers, pastIncorrectAnswers } = state;
+    return isCorrect ? {
+        ...state,
+        // the formula below calculates the new average answer time // basically just total time divided by total answers //
+        averageAnswerTime: (((averageAnswerTime) * (pastCorrectAnswers + pastIncorrectAnswers) + currentAnswerTime) /
+            (pastCorrectAnswers + pastIncorrectAnswers + 1)),
+        // incorrect answers do not affect the averageAnswerTime //
+        pastCorrectAnswers: pastCorrectAnswers + 1,
+    } : {
+            ...state,
+            pastIncorrectAnswers: pastIncorrectAnswers + 1,
+        }
 }

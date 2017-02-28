@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { questionAnswered, transitionCompleted } from '../actions/playStateActions.js';
 import { gameOver } from '../actions/endGameActions.js';
 
-var $ = require('jquery'); //need jquery to handle bootrap modals, please forgive me
+const $ = require('jquery'); //need jquery to handle bootrap modals, please forgive me
 
 class Answer extends Component {
     handleClick() {
@@ -40,7 +40,7 @@ class Answer extends Component {
     }
 }
 
-let mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return {
         //these are for the playStateReducer
         paused: state.playState.paused,
@@ -59,7 +59,7 @@ let mapStateToProps = (state) => {
     }
 }
 
-let matchDispatchToProps = (dispatch) => {
+const matchDispatchToProps = (dispatch) => {
     return bindActionCreators({ questionAnswered: questionAnswered,
         transitionCompleted: transitionCompleted,
         gameOver: gameOver,

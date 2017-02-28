@@ -41,7 +41,7 @@ class Question extends Component {
     }
 }
 
-let mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return {
         question: state.playState.question,
         currentAnswerTime: state.playState.currentAnswerTime,
@@ -56,7 +56,7 @@ let mapStateToProps = (state) => {
     }
 }
 
-let matchDispatchToProps = (dispatch) => {
+const matchDispatchToProps = (dispatch) => {
     return bindActionCreators({ clickedPause: clickedPause, updateTimer: updateTimer }, dispatch);
 }
 

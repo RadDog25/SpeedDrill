@@ -3,10 +3,15 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { newSession } from '../actions/endGameActions.js';
+import { transitionCompleted } from '../actions/playStateActions.js';
 
 class Modal extends Component {
   handleClick() {
     this.props.newSession();
+    //execute transition then show new quiz
+    setTimeout(() => {
+      this.props.transitionCompleted(this.props.category, this.props.difficulty);
+    }, 1000);
   }
   render() {
     return (
@@ -16,8 +21,8 @@ class Modal extends Component {
             <div className="modal-header"> {/* reset quiz if the close button is clicked */}
               <button onClick={this.handleClick.bind(this)} type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h3 className="modal-title" id="myModalLabel">
-                    <span className="glyphicon glyphicon-check" aria-hidden="true"></span>
-                    <span>Session Complete!</span>
+                <span className="glyphicon glyphicon-check" aria-hidden="true"></span>
+                <span>Session Complete!</span>
               </h3>
             </div>
 
@@ -55,16 +60,19 @@ class Modal extends Component {
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     pastCorrectAnswers: state.history.pastCorrectAnswers,
     accuracy: Math.round((state.history.pastCorrectAnswers / 20) * 100), //round accuracy and speed
     speed: Math.round((state.history.averageAnswerTime) * 10) / 10,
+    //needed for transitionCompleted
+    category: state.settings.category,
+    difficulty: state.settings.difficulty,
   }
 }
 
-let matchDispatchToProps = (dispatch) => {
-  return bindActionCreators({ newSession: newSession }, dispatch);
+const matchDispatchToProps = (dispatch) => {
+  return bindActionCreators({ newSession: newSession, transitionCompleted: transitionCompleted }, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(Modal);

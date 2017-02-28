@@ -14,7 +14,7 @@ const initialPlayState = {
     isGameOver: false,
 }
 
-let playStateReducer = (state = initialPlayState, action) => {
+const playStateReducer = (state = initialPlayState, action) => {
     switch (action.type) {
         case "CLICKED_TIMER":
             state = { ...state, paused: !action.payload }
@@ -31,8 +31,19 @@ let playStateReducer = (state = initialPlayState, action) => {
                 buttonStyles: getStyles(state.correctIndex, action.payload.index),
             }
             break;
+        case "CLICKED_CATEGORY":
+        case "CLICKED_DIFFICULTY":
+        case "NEW_SESSION":
+        case "CLICKED_RESTART":
+            state = {
+                ...state,
+                transitioning: true,
+                questionStyle: "myDropdownClick",
+                isGameOver: false,
+            }
+            break;
         case "TRANSITION_COMPLETED":
-            let { question, answers, correctIndex, correctAnswer } = getNumbers(action.payload.category, action.payload.difficulty);
+            let { question, answers, correctIndex, correctAnswer } = getNumbers(action.payload.category, action.payload.difficulty, state.question);
             state = {
                 ...state,
                 currentAnswerTime: 0,
@@ -44,13 +55,6 @@ let playStateReducer = (state = initialPlayState, action) => {
                 buttonStyles: ["", "", "", ""],
                 correctIndex: correctIndex,
                 correctAnswer: correctAnswer,
-            }
-            break;
-        case "NEW_SESSION":
-            state = {
-                ...state,
-                currentAnswerTime: 0,
-                isGameOver: false,
             }
             break;
         case "GAME_OVER":

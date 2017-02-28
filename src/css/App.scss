@@ -25,6 +25,11 @@ body {
         .title {
             font-size: 3em;
             font-family: 'Lobster', cursive;
+            .restartTest {
+                font-size: 0.5em;
+                float: right;
+                color: #333
+            }
         }
         .jumbotron {
             margin-top: 30px;
@@ -36,6 +41,9 @@ body {
             }
             .glyphicon-screenshot {
                 float: left;
+            }
+            .restartBtn {
+                float: right;
             }
         }
         /* srink the jumbotron question display for smaller devices like phones */
@@ -69,6 +77,10 @@ body {
         .myIncorrect {
             background-color: #f2dede;
             color: #a94442; 
+        }
+        .myDropdownClick {
+            background-color: #d9edf7;
+            color: #31708f;
         }
         .btn {
             transition: background-color ease-in-out 0.25s;

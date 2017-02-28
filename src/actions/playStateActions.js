@@ -37,3 +37,9 @@ export function transitionCompleted(category, difficulty) {
         }
     }
 }
+
+export function clickedRestart() {
+    return {
+        type: "CLICKED_RESTART"
+    }
+}

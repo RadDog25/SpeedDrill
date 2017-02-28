@@ -9,19 +9,19 @@ import Question from './Question.js';
 import Answer from './Answer.js';
 import ScoreAlert from './ScoreAlert.js';
 import Modal from './Modal.js';
+import Restart from './Restart.js';
 
 
 class App extends Component {
   render() {
     return (
       <div className="container">
-
         <Modal />
-
         <h1 className="title" >
           <span className="glyphicon glyphicon-flash" aria-hidden="true"></span>
           Speed Drill
-          </h1>
+          <Restart />
+        </h1>
         <div className="row">
           <div className="col-xs-6 col-md-3">
             <DropdownMenu title={this.props.settings.category} label="Category" lis={["Addition", "Subtraction", "Multiplication", "Division", "Random"]} />

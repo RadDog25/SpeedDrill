@@ -3,7 +3,7 @@ const initialSettingsState = {
     difficulty: "Easy",
 }
 
-let settingsReducer = (state = initialSettingsState, action) => {
+const settingsReducer = (state = initialSettingsState, action) => {
     switch (action.type) {
         case "CLICKED_CATEGORY":
             state = { ...state, category: action.payload }

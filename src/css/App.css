@@ -18,6 +18,10 @@ body .container {
   body .container .title {
     font-size: 3em;
     font-family: 'Lobster', cursive; }
+    body .container .title .restartTest {
+      font-size: 0.5em;
+      float: right;
+      color: #333; }
   body .container .jumbotron {
     margin-top: 30px;
     transition: background-color ease-in-out 0.25s;
@@ -27,6 +31,8 @@ body .container {
       cursor: auto; }
     body .container .jumbotron .glyphicon-screenshot {
       float: left; }
+    body .container .jumbotron .restartBtn {
+      float: right; }
   @media screen and (max-width: 480px) {
     body .container .jumbotron {
       margin-top: 12px;
@@ -49,6 +55,9 @@ body .container {
   body .container .myIncorrect {
     background-color: #f2dede;
     color: #a94442; }
+  body .container .myDropdownClick {
+    background-color: #d9edf7;
+    color: #31708f; }
   body .container .btn {
     transition: background-color ease-in-out 0.25s; }
   @media screen and (min-width: 360px) {
