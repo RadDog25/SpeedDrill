@@ -7,7 +7,7 @@ import { clickedPause, updateTimer } from '../actions/playStateActions.js';
 class Question extends Component {
     componentDidMount() {
         /* after timer mounts, increment the clock every 1 second as long as the game is not paused */
-        let increment = 1;
+        let increment = 0.1; /*changed from 1 to 0.1 */
         setInterval(() => {
             if (!this.props.paused && !this.props.isGameOver) { this.props.updateTimer(this.props.currentAnswerTime, increment); }
         }, 1000 * increment);
@@ -31,7 +31,8 @@ class Question extends Component {
                     </button>
 
                     <button className={`btn btn-default btn-md disabled timer ${this.props.timerStyle}`}>
-                        {`${this.props.currentAnswerTime}s`}
+                        { /*  */}
+                        {`${ Math.floor( this.props.currentAnswerTime ) }s`}
                     </button>
                 </div>
                 {/* if transitioning then the answer is shown in bold */}
