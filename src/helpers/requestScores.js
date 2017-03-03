@@ -15,7 +15,7 @@ export default (state) => {
                     key: "rad777dog777X",
                     score: 5 * pastCorrectAnswers,
                     time: averageAnswerTime,
-                    log: log,
+                    log: "test",
                 },
                 success: (data) => {
                     console.log(data);
