@@ -12,10 +12,22 @@ const initialPlayState = {
     correctIndex: 2,
     correctAnswer: 4,
     isGameOver: false,
+    competing: false,
 }
 
 const playStateReducer = (state = initialPlayState, action) => {
     switch (action.type) {
+        case "CLICKED_PRACTICE_MODE":
+        case "CLICKED_COMPETE_MODE":
+            state = {
+                ...state,
+                competing: action.type === "CLICKED_COMPETE_MODE" ? true : false,
+                transitioning: true,
+                questionStyle: "myDropdownClick",
+                isGameOver: false,
+                paused: false,
+            }
+            break;
         case "CLICKED_TIMER":
             state = { ...state, paused: !action.payload }
             break;
@@ -33,8 +45,6 @@ const playStateReducer = (state = initialPlayState, action) => {
             break;
         case "CLICKED_CATEGORY":
         case "CLICKED_DIFFICULTY":
-        case "NEW_SESSION":
-        case "CLICKED_RESTART":
             state = {
                 ...state,
                 transitioning: true,

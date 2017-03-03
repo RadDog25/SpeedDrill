@@ -1,43 +1,58 @@
 @import url("https://fonts.googleapis.com/css?family=Lobster");
-body .container {
+html body .myWrapper {
+  height: 100%;
+  transition: background-color 1s ease-in-out;
+  background-color: white; }
+html body .myCompeting {
+  background-color: lightblue; }
+html body .container {
   /* srink the jumbotron question display for smaller devices like phones */
   /*modify the alert bootstrap class */
   /* myCorrect and .myIncorrect change the color of the answer buttons and question jumbotron depending on the validity of the users answer */
   /* for larger phones and all other devices, add some spacing between the buttons */ }
-  body .container .modal-header .modal-title {
-    text-align: center; }
-    body .container .modal-header .modal-title .glyphicon-check {
+  html body .container .modal-header .modal-title {
+    text-align: center;
+    font-family: 'Lobster', cursive; }
+    html body .container .modal-header .modal-title .glyphicon-check {
       float: left; }
-  body .container .modal-body td {
-    font-size: 1.5em;
-    padding: 10px; }
-  body .container .modal-body .goodResult {
-    color: #468847; }
-  body .container .modal-body .badResult {
-    color: #a94442; }
-  body .container .title {
+  html body .container .modal-body {
+    text-align: center; }
+    html body .container .modal-body td {
+      font-size: 1em;
+      padding: 10px; }
+    html body .container .modal-body .goodResult {
+      color: #468847; }
+    html body .container .modal-body .badResult {
+      color: #a94442; }
+    html body .container .modal-body .myResults {
+      font-size: 1.5em; }
+    html body .container .modal-body .mySubmit {
+      margin-top: 10px; }
+  html body .container .modal-footer .myStartGame, html body .container .modal-footer .myEndGame {
+    margin-bottom: 10px; }
+  html body .container .title {
     font-size: 3em;
     font-family: 'Lobster', cursive; }
-    body .container .title .restartTest {
+    html body .container .title .restartTest {
       font-size: 0.5em;
       float: right;
       color: #333; }
-  body .container .jumbotron {
+  html body .container .jumbotron {
     margin-top: 30px;
     transition: background-color ease-in-out 0.25s;
     text-align: center; }
-    body .container .jumbotron .timer {
+    html body .container .jumbotron .timer {
       width: 100px;
       cursor: auto; }
-    body .container .jumbotron .glyphicon-screenshot {
+    html body .container .jumbotron .glyphicon-screenshot {
       float: left; }
-    body .container .jumbotron .restartBtn {
+    html body .container .jumbotron .restartBtn {
       float: right; }
   @media screen and (max-width: 480px) {
-    body .container .jumbotron {
+    html body .container .jumbotron {
       margin-top: 12px;
       margin-bottom: 12px; } }
-  body .container .scoreAlert {
+  html body .container .scoreAlert {
     font-size: 1.2em;
     padding: 5px;
     border-radius: 20px;
@@ -45,23 +60,23 @@ body .container {
     width: 70px;
     display: inline-block;
     margin-right: 10px; }
-    body .container .scoreAlert .glyphicon {
+    html body .container .scoreAlert .glyphicon {
       float: right; }
-  body .container .alert-info {
+  html body .container .alert-info {
     width: 90px; }
-  body .container .myCorrect {
+  html body .container .myCorrect {
     background-color: #dff0d8;
     color: #468847; }
-  body .container .myIncorrect {
+  html body .container .myIncorrect {
     background-color: #f2dede;
     color: #a94442; }
-  body .container .myDropdownClick {
+  html body .container .myDropdownClick {
     background-color: #d9edf7;
     color: #31708f; }
-  body .container .btn {
+  html body .container .btn {
     transition: background-color ease-in-out 0.25s; }
   @media screen and (min-width: 360px) {
-    body .container .answer-btn {
+    html body .container .answer-btn {
       margin-bottom: 10px; } }
 
 /* success bg color is #dff0d8 */

@@ -85,25 +85,7 @@ export function getNumbers(category, difficulty, oldQuestion) {
     }
 }
 
-
-/* the old getHistory here
-export function getHistory(state, { isCorrect, currentAnswerTime }) {
-    const { averageAnswerTime, pastCorrectAnswers, pastIncorrectAnswers } = state;
-    return isCorrect ? {
-        ...state,
-        // the formula below calculates the new average answer time // basically just total time divided by total answers //
-        averageAnswerTime: (((averageAnswerTime) * (pastCorrectAnswers + pastIncorrectAnswers) + currentAnswerTime) /
-            (pastCorrectAnswers + pastIncorrectAnswers + 1)),
-        // incorrect answers do not affect the averageAnswerTime //
-        pastCorrectAnswers: pastCorrectAnswers + 1,
-    } : {
-            ...state,
-            pastIncorrectAnswers: pastIncorrectAnswers + 1,
-        }
-}
-*/
-
-export function getHistory(state, { isCorrect, currentAnswerTime, category, difficulty }) {
+export function getHistory(state, { isCorrect, currentAnswerTime, category, difficulty, competing }) {
     const { averageAnswerTime, pastCorrectAnswers, pastIncorrectAnswers, log } = state;
     return {
         pastCorrectAnswers: isCorrect ? pastCorrectAnswers + 1 : pastCorrectAnswers,
@@ -116,6 +98,7 @@ export function getHistory(state, { isCorrect, currentAnswerTime, category, diff
             isCorrect: isCorrect,
             category: category,
             difficulty: difficulty,
+            competing: competing,
         }),
     }
 }

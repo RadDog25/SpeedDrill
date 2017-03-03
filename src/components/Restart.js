@@ -2,16 +2,13 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+const $ = require('jquery'); //need jquery to handle bootrap modals, please forgive me
+
 import { clickedRestart, transitionCompleted } from '../actions/playStateActions.js';
 
 class Restart extends Component {
     handleClick() {
-        /* only accept answer if game state is not paused or transitioning */ //should add a tooltip for that
-        this.props.clickedRestart();
-        //have the transitionCompleted function call itself after a delay
-        setTimeout(() => {
-            this.props.transitionCompleted(this.props.category, this.props.difficulty);
-        }, 1000);
+        $('#StartGameModal').modal({ backdrop: "static", keyboard: false, show: true});
     }
     render() {
         return (

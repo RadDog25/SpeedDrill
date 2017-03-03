@@ -8,43 +8,49 @@ import DropdownMenu from './DropdownMenu.js'; //bring in components
 import Question from './Question.js';
 import Answer from './Answer.js';
 import ScoreAlert from './ScoreAlert.js';
-import Modal from './Modal.js';
+import StartGameModal from './StartGameModal.js';
+import EndGameModal from './EndGameModal.js';
+import SubmitUsernameModal from './SubmitUsernameModal.js';
 import Restart from './Restart.js';
 
 
 class App extends Component {
   render() {
     return (
-      <div className="container">
-        <Modal />
-        <h1 className="title" >
-          <span className="glyphicon glyphicon-flash" aria-hidden="true"></span>
-          Speed Drill
+      <div className={/* apply colored backgound when competing */`myWrapper ${this.props.competing ? "myCompeting" : "" }`} >
+        <div className="container" >
+          <StartGameModal />
+          <EndGameModal />
+          <SubmitUsernameModal />
+          <h1 className="title" >
+            <span className="glyphicon glyphicon-flash" aria-hidden="true"></span>
+            Speed Drill
           <Restart />
-        </h1>
-        <div className="row">
-          <div className="col-xs-6 col-md-3">
-            <DropdownMenu title={this.props.settings.category} label="Category" lis={["Addition", "Subtraction", "Multiplication", "Division", "Random"]} />
+          </h1>
+          <div className="row">
+            <div className="col-xs-6 col-md-3">
+              <DropdownMenu title={this.props.settings.category} label="Category" lis={["Addition", "Subtraction", "Multiplication", "Division", "Random"]} />
+            </div>
+            <div className="col-xs-6 col-md-3">
+              <DropdownMenu title={this.props.settings.difficulty} label="Difficulty" lis={["Easy", "Medium", "Hard"]} />
+            </div>
           </div>
-          <div className="col-xs-6 col-md-3">
-            <DropdownMenu title={this.props.settings.difficulty} label="Difficulty" lis={["Easy", "Medium", "Hard"]} />
+          <Question />
+          {/* alert needs text, alert class and glyphicon class props  */}
+          <div className="row">
+            <div className="col-xs-12">
+              <ScoreAlert alert="success" glyphicon="ok" text={this.props.history.pastCorrectAnswers} />
+              <ScoreAlert alert="danger" glyphicon="remove" text={this.props.history.pastIncorrectAnswers} />
+              <ScoreAlert alert="info" glyphicon="" text={`${this.props.history.pastCorrectAnswers + this.props.history.pastIncorrectAnswers} / 20`} />
+            </div>
           </div>
-        </div>
-        <Question />
-        {/* alert needs text, alert class and glyphicon class props  */}
-        <div className="row">
-          <div className="col-xs-12">
-            <ScoreAlert alert="success" glyphicon="ok" text={this.props.history.pastCorrectAnswers} />
-            <ScoreAlert alert="danger" glyphicon="remove" text={this.props.history.pastIncorrectAnswers} />
-            <ScoreAlert alert="info" glyphicon="" text={`${this.props.history.pastCorrectAnswers + this.props.history.pastIncorrectAnswers} / 20`} />
+          <div className="row">
+            { //make 4 answers
+              this.props.answers.map((answer, index) => {
+                return <Answer answer={answer} key={index} index={index} />
+              })
+            }
           </div>
-        </div>
-        <div className="row">
-          { //make 4 answers
-            this.props.answers.map((answer, index) => {
-              return <Answer answer={answer} key={index} index={index} />
-            })
-          }
         </div>
       </div>
     );
@@ -56,6 +62,7 @@ function mapStateToProps(state) {
     settings: state.settings,
     answers: state.playState.answers,
     history: state.history,
+    competing: state.playState.competing,
   }
 }
 

@@ -18,14 +18,18 @@ class Answer extends Component {
                 this.props.averageAnswerTime,
                 this.props.category,
                 this.props.difficulty,
+                this.props.competing,
             );
             //have the transitionCompleted function call itself after a delay
             setTimeout(() => {
-                if(this.props.numQuestionsAnswered >= 20) { //change back to 2 for testing
+                if(this.props.numQuestionsAnswered >= 2) { //change back to 20 after testing
                     this.props.gameOver();
-                    $('#myModal').modal({ show: true}); //lol jQuery in React
+                    $('#EndGameModal').modal({ show: true}); //lol jQuery in React
                 }
-                this.props.transitionCompleted(this.props.category, this.props.difficulty);
+                else {
+                    /* if game is not over then complete the transition */
+                    this.props.transitionCompleted(this.props.category, this.props.difficulty);
+                }
             }, 1000);
         }
     }
@@ -54,9 +58,10 @@ const mapStateToProps = (state) => {
         averageAnswerTime: state.history.averageAnswerTime,
         //to prevent things from running when the modal comes up
         isGameOver: state.playState.isGameOver,
-        //the two below are for the historyReducer
+        //the three below are for the historyReducer
         correctIndex: state.playState.correctIndex,
         currentAnswerTime: state.playState.currentAnswerTime,
+        competing: state.playState.competing,
         //history is needed to know if the game is over
         numQuestionsAnswered: state.history.pastCorrectAnswers + state.history.pastIncorrectAnswers,    
     }
