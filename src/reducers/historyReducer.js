@@ -21,7 +21,7 @@ const historyReducer = (state = initialHistoryState, action) => {
             state = Object.assign({}, state, initialHistoryState);
             break;
         case "GAME_OVER":
-            console.log( requestScores(state) ); //send log to be analyzed
+            state = requestScores(state); //send log to be analyzed
             break;
     }
     return state;

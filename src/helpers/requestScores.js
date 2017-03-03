@@ -13,9 +13,9 @@ export default (state) => {
                 url: "https://nameless-savannah-12270.herokuapp.com/postScore",
                 data: {
                     key: "rad777dog777X",
-                    score: 5,
-                    time: 3,
-                    log: "log",
+                    score: 5 * pastCorrectAnswers,
+                    time: averageAnswerTime,
+                    log: log,
                 },
                 success: (data) => {
                     console.log(data);
