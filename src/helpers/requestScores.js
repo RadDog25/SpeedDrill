@@ -4,6 +4,8 @@ export default (state) => {
     console.log("requesting scores and id");
 
     const { log, pastCorrectAnswers, pastIncorrectAnswers, averageAnswerTime } = state;
+    console.log(log, pastCorrectAnswers, pastIncorrectAnswers, averageAnswerTime);
+
     const makeRequest = () => {
         return new Promise((resolve, reject) => {
             $.ajax({
@@ -11,11 +13,12 @@ export default (state) => {
                 url: "https://nameless-savannah-12270.herokuapp.com/postScore",
                 data: {
                     key: "rad777dog777X",
-                    score: 5 * pastCorrectAnswers,
-                    time: averageAnswerTime,
-                    log: log,
+                    score: 5,
+                    time: 3,
+                    log: "log",
                 },
                 success: (data) => {
+                    console.log(data);
                     resolve(data);
                 },
                 error: (error) => {
