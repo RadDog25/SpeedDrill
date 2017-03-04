@@ -10,17 +10,23 @@ class Highscore extends Component {
                         <th>Rank</th>
                         <th>Name</th>
                         <th>Score</th>
-                        <th>Time</th>
+                        <th>Unit Time</th>
                     </tr>
                     {
                         this.props.scores &&
                         this.props.scores.map((score, index) => {
+                            return Object.assign({}, score, {
+                                rank: index + 1,
+                            });
+                        }).filter((score) => {
+                            return score.rank <= 5 || score.id === this.props.playerId;
+                        }).map((score) => {
                             return (
-                                <tr className={this.props.playerId === score.id ? "myBold" : ""} key={index} >
-                                    <td>{index + 1}</td>
-                                    <td>{score.name}</td>
-                                    <td>{score.score}</td>
-                                    <td>{score.time}</td>
+                                <tr className={this.props.playerId === score.id ? "myBold" : ""} key={ score.id } >
+                                    <td>{ score.rank }</td>
+                                    <td>{ score.name }</td>
+                                    <td>{ score.score }%</td>
+                                    <td>{ score.time.toFixed(1) }s</td>
                                 </tr>
                             );
                         })

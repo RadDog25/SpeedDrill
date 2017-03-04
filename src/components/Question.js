@@ -7,7 +7,7 @@ import { clickedPause, updateTimer } from '../actions/playStateActions.js';
 class Question extends Component {
     componentDidMount() {
         /* after timer mounts, increment the clock every 1 second as long as the game is not paused */
-        let increment = 0.1; /*changed from 1 to 0.1 feb 28 12:43 PM*/
+        let increment = 0.1; /*changed from 1 to 0.1 feb 28 12:43 PM, from 0.1  */
         setInterval(() => {
             if (!this.props.paused && !this.props.isGameOver) { this.props.updateTimer(this.props.currentAnswerTime, increment); }
         }, 1000 * increment);

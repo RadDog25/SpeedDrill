@@ -13,7 +13,6 @@ class SubmitUsernameModal extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
   handleSubmit(e) {
-    console.log("submission:", this.props.username);
     e.preventDefault();
     this.props.submitForm(this.props.username, this.props.playerId, this.props.scores);
     $('#SubmitUsernameModal').modal('hide');
@@ -21,7 +20,11 @@ class SubmitUsernameModal extends Component {
   }
 
   handleChange(e) {
-    this.props.formChange(e.target.value);
+    const maxLength = 10;
+    const username = e.target.value;
+    if(username.length <= maxLength) {
+      this.props.formChange(e.target.value);
+    }
   }
 
   render() {
