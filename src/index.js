@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { combineReducers, createStore } from 'redux';
+import thunk from 'redux-thunk';
+import { combineReducers, createStore, applyMiddleware } from 'redux';
 import App from './components/App.js';
 import './css/index.css';
 
@@ -18,7 +19,10 @@ const reducer = combineReducers({
   submit: submitReducer,
 });
 
-const store = createStore(reducer);
+const store = createStore(
+  reducer,
+  applyMiddleware(thunk),
+  );
 
 ReactDOM.render(
   <Provider store={store}>

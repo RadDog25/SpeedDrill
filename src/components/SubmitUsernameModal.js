@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { formChange, submitForm } from '../actions/endGameActions';
+import { formChange, submitForm, newSession } from '../actions/endGameActions';
 
 const $ = require('jquery'); //need jquery to handle bootrap modals, please forgive me
 
@@ -15,9 +15,9 @@ class SubmitUsernameModal extends Component {
   handleSubmit(e) {
     console.log("submission:", this.props.username);
     e.preventDefault();
-    this.props.submitForm();
+    this.props.submitForm(this.props.username, this.props.playerId, this.props.scores);
     $('#SubmitUsernameModal').modal('hide');
-    $('#EndGameModal').modal({ backdrop: "static", keyboard: false, show: true });
+    $('#EndCompeteModal').modal({ backdrop: "static", keyboard: false, show: true });
   }
 
   handleChange(e) {
@@ -29,9 +29,7 @@ class SubmitUsernameModal extends Component {
       <div className="modal fade" id="SubmitUsernameModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" >
         <div className="modal-dialog" role="document">
           <div className="modal-content">
-            <div className="modal-header"> {/* reset quiz if the close button is clicked */}
-              <button onClick={this.handleSubmit} type="button" className="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span></button>
+            <div className="modal-header">
               <h3 className="modal-title" id="myModalLabel">
                 <span className="glyphicon glyphicon-check" aria-hidden="true"></span>
                 <span>Submit Username!</span>
@@ -57,11 +55,15 @@ class SubmitUsernameModal extends Component {
 const mapStateToProps = (state) => {
   return {
     username: state.submit.username,
+    //playerId and log needed for submit form action
+    playerId: state.history.playerId,
+    scores: state.history.scores,
   }
 }
 
 const matchDispatchToProps = (dispatch) => {
   return bindActionCreators({
+    newSession: newSession,
     formChange: formChange,
     submitForm: submitForm,
   }, dispatch);

@@ -1,5 +1,4 @@
 import { getHistory } from '../helpers/questionAnswered.js';
-import requestScores from '../helpers/requestScores.js';
 
 const initialHistoryState = {
     pastCorrectAnswers: 0,
@@ -9,6 +8,7 @@ const initialHistoryState = {
     log: [],
     playerId: null,
     scores: [],
+    loading: false,
 }
 
 const historyReducer = (state = initialHistoryState, action) => {
@@ -20,8 +20,34 @@ const historyReducer = (state = initialHistoryState, action) => {
         case "CLICKED_COMPETE_MODE":
             state = Object.assign({}, state, initialHistoryState);
             break;
-        case "GAME_OVER":
-            state = requestScores(state); //send log to be analyzed
+        case "SCORES_ARE_LOADING":
+            state = {
+                ...state,
+                loading: true,
+            }
+            break;
+        case "SCORES_HAVE_ERRORED":
+            state = {
+                ...state,
+                playerId: action.payload.playerId,
+                scores: action.payload.scores,
+                loading: false,
+            }
+            break;
+        case "SCORES_FETCH_SUCCESS":
+            state = {
+                ...state,
+                playerId: action.payload.playerId,
+                scores: action.payload.scores,
+                loading: false,
+            }
+            console.log("new state", state);
+            break;
+        case "FORM_SUBMIT":
+            state = {
+                ...state,
+                scores: action.payload.scores
+            }
             break;
     }
     return state;

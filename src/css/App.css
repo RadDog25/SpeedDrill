@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Lobster");
+@keyframes spin {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
 html body .myWrapper {
   height: 100%;
   transition: background-color 1s ease-in-out;
@@ -17,6 +22,11 @@ html body .container {
       float: left; }
   html body .container .modal-body {
     text-align: center; }
+    html body .container .modal-body .myCog {
+      font-size: 5em;
+      animation: spin 2s infinite linear; }
+    html body .container .modal-body table tbody .myBold {
+      font-weight: bold; }
     html body .container .modal-body td {
       font-size: 1em;
       padding: 10px; }

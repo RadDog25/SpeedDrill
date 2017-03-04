@@ -9,7 +9,8 @@ import Question from './Question.js';
 import Answer from './Answer.js';
 import ScoreAlert from './ScoreAlert.js';
 import StartGameModal from './StartGameModal.js';
-import EndGameModal from './EndGameModal.js';
+import EndCompeteModal from './EndCompeteModal.js';
+import EndPracticeModal from './EndPracticeModal.js';
 import SubmitUsernameModal from './SubmitUsernameModal.js';
 import Restart from './Restart.js';
 
@@ -17,10 +18,14 @@ import Restart from './Restart.js';
 class App extends Component {
   render() {
     return (
-      <div className={/* apply colored backgound when competing */`myWrapper ${this.props.competing ? "myCompeting" : "" }`} >
+      <div className={/* apply colored backgound when competing */`myWrapper ${this.props.competing ? "myCompeting" : ""}`} >
         <div className="container" >
           <StartGameModal />
-          <EndGameModal />
+            <EndCompeteModal />
+
+
+            <EndPracticeModal />
+
           <SubmitUsernameModal />
           <h1 className="title" >
             <span className="glyphicon glyphicon-flash" aria-hidden="true"></span>

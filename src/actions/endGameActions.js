@@ -1,8 +1,10 @@
+const $ = require('jquery');
+
 export function gameOver() {
     return {
         type: "GAME_OVER",
     }
-} 
+}
 
 export function newSession() {
     return {
@@ -19,20 +21,35 @@ export function formChange(username) {
     }
 }
 
-export function submitForm() {
-    console.log("form submission action!");
+export function submitForm(username, playerId, scores) {
+    //talk to our database asyncronously
+    $.ajax({
+        type: "GET",
+        url: "https://nameless-savannah-12270.herokuapp.com/postName",
+        data: {
+            key: "rad777dog777X",
+            playerId: playerId,
+            name: username,
+        },
+        success: (data) => {
+            console.log("successfully sent username to database!");
+        },
+        error: (error) => {
+            console.log("could not send username to database! Error: ", error);
+        }
+    });
     return {
         type: "FORM_SUBMIT",
-    }
-}
-
-export function receivedScores(playerId, scores) {
-    console.log("received scores");
-    return {
-        type: "RECEIVED_SCORES",
         payload: {
-            playerId: playerId,
-            scores: scores,
+            scores: scores.map((score, index) => {
+                return {
+                    id: score.id,
+                    name: score.id === playerId ? username : score.name,
+                    score: score.score,
+                    time: score.time,
+                }
+            }),
         }
     }
 }
+

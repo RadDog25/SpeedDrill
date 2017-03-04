@@ -12,6 +12,7 @@ $(document).ready( function () {
     $('[data-toggle="tooltip"]').tooltip({ container: 'body' });
     $('#TimerTooltip').tooltip();
     $('#StartGameModal').modal({ backdrop: "static", keyboard: false, show: false}); //setup my modal to be static as things will break otherwise
-    $('#EndGameModal').modal({ backdrop: "static", keyboard: false, show: false});
+    $('#EndCompeteModal').modal({ backdrop: "static", keyboard: false, show: false});
+    $('#EndPracticeModal').modal({ backdrop: "static", keyboard: false, show: false});
     $('#SubmitUsernameModal').modal({ backdrop: "static", keyboard: false, show: false});
 });

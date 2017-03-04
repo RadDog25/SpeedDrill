@@ -13,9 +13,10 @@ class Highscore extends Component {
                         <th>Time</th>
                     </tr>
                     {
-                        this.props.highscore.map((score, index) => {
+                        this.props.scores &&
+                        this.props.scores.map((score, index) => {
                             return (
-                                <tr key={index} >
+                                <tr className={this.props.playerId === score.id ? "myBold" : ""} key={index} >
                                     <td>{index + 1}</td>
                                     <td>{score.name}</td>
                                     <td>{score.score}</td>
@@ -33,7 +34,8 @@ class Highscore extends Component {
 const mapStateToProps = (state) => {
     return {
         //highscore to print if competing
-        highscore: state.history.highscore
+        scores: state.history.scores,
+        playerId: state.history.playerId,
     }
 }
 

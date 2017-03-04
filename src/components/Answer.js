@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { questionAnswered, transitionCompleted } from '../actions/playStateActions.js';
 import { gameOver } from '../actions/endGameActions.js';
+import { requestScores } from '../actions/requestActions.js';
 
 const $ = require('jquery'); //need jquery to handle bootrap modals, please forgive me
 
@@ -19,12 +20,23 @@ class Answer extends Component {
                 this.props.category,
                 this.props.difficulty,
                 this.props.competing,
-            );
+                );
             //have the transitionCompleted function call itself after a delay
             setTimeout(() => {
                 if(this.props.numQuestionsAnswered >= 2) { //change back to 20 after testing
                     this.props.gameOver();
-                    $('#EndGameModal').modal({ show: true}); //lol jQuery in React
+                    this.props.requestScores(
+                        this.props.pastCorrectAnswers,
+                        this.props.averageAnswerTime, 
+                        this.props.log,
+                        );
+                    if(this.props.competing) {
+                        $('#EndCompeteModal').modal({ show: true}); //lol jQuery in React
+                    }
+                    else {
+                        $('#EndPracticeModal').modal({ show: true}); //lol jQuery in React
+                    }
+                    
                 }
                 else {
                     /* if game is not over then complete the transition */
@@ -36,13 +48,13 @@ class Answer extends Component {
     render() {
         return (
             <div className="col-xs-12 col-md-3">
-                <button onClick={this.handleClick.bind(this)} type="button"
+            <button onClick={this.handleClick.bind(this)} type="button"
                     //if the game is paused then change the style of the answer buttons to be disabled
                     className={`btn btn-block btn-lg btn-default answer-btn ${this.props.paused ? "disabled" : ""} ${this.props.buttonStyles[this.props.index]}`}>
                     {this.props.answer}
-                </button>
-            </div>
-        );
+                    </button>
+                    </div>
+                    );
     }
 }
 
@@ -62,15 +74,19 @@ const mapStateToProps = (state) => {
         correctIndex: state.playState.correctIndex,
         currentAnswerTime: state.playState.currentAnswerTime,
         competing: state.playState.competing,
-        //history is needed to know if the game is over
-        numQuestionsAnswered: state.history.pastCorrectAnswers + state.history.pastIncorrectAnswers,    
+        //history is needed to know if the game is over and to pass data
+        pastCorrectAnswers: state.history.pastCorrectAnswers,
+        numQuestionsAnswered: state.history.pastCorrectAnswers + state.history.pastIncorrectAnswers,
+        log: state.history.log,
     }
 }
 
 const matchDispatchToProps = (dispatch) => {
-    return bindActionCreators({ questionAnswered: questionAnswered,
+    return bindActionCreators({ 
+        questionAnswered: questionAnswered,
         transitionCompleted: transitionCompleted,
         gameOver: gameOver,
+        requestScores: requestScores,
     }, dispatch);
 }
 
