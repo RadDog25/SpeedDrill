@@ -23,6 +23,7 @@ export function formChange(username) {
 
 export function submitForm(username, playerId, scores) {
     //talk to our database asyncronously
+    //for the purpose of the UI, we dont actually care when the data reaches the API
     $.ajax({
         type: "GET",
         url: "https://nameless-savannah-12270.herokuapp.com/postName",

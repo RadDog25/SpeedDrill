@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Dropdown from './Dropdown.js';
 import { connect } from 'react-redux';
 
-
-
 class DropdownMenu extends Component {
     render() {
         return (

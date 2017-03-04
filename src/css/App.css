@@ -4,6 +4,10 @@
     transform: rotate(0deg); }
   to {
     transform: rotate(360deg); } }
+html body .myCog {
+  color: #333;
+  font-size: 0.9em;
+  animation: spin 2s infinite linear; }
 html body .myWrapper {
   height: 100%;
   transition: background-color 1s ease-in-out;
@@ -21,15 +25,21 @@ html body .container {
     html body .container .modal-header .modal-title .glyphicon-check {
       float: left; }
   html body .container .modal-body {
-    text-align: center; }
+    text-align: center;
+    /* trying to keep the highscore looking nice on small devices if name is WWWWWWWWWWWW... */ }
     html body .container .modal-body .myCog {
-      font-size: 5em;
-      animation: spin 2s infinite linear; }
+      font-size: 6em; }
     html body .container .modal-body table tbody .myBold {
       font-weight: bold; }
     html body .container .modal-body td {
       font-size: 1em;
-      padding: 10px; }
+      padding: 10px 3px 10px 3px; }
+    @media screen and (max-width: 360px) {
+      html body .container .modal-body td {
+        font-size: 0.9em; } }
+    @media screen and (max-width: 320px) {
+      html body .container .modal-body td {
+        font-size: 0.8em; } }
     html body .container .modal-body .goodResult {
       color: #468847; }
     html body .container .modal-body .badResult {
@@ -41,10 +51,10 @@ html body .container {
   html body .container .modal-footer .myStartGame, html body .container .modal-footer .myEndGame {
     margin-bottom: 10px; }
   html body .container .title {
-    font-size: 3em;
+    font-size: 2em;
     font-family: 'Lobster', cursive; }
     html body .container .title .restartTest {
-      font-size: 0.5em;
+      font-size: 1em;
       float: right;
       color: #333; }
   html body .container .jumbotron {

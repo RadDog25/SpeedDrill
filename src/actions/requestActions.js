@@ -22,7 +22,6 @@ export function scoresAreLoading() {
     };
 }
 export function scoresFetchSuccess(data) {
-
     return {
         type: 'SCORES_FETCH_SUCCESS',
         payload: data,
@@ -99,7 +98,7 @@ export function requestScores(pastCorrectAnswers, averageAnswerTime, log) {
 }
 
 
-
+/* And this is the production call */
 /*
 export function requestScores(pastCorrectAnswers, averageAnswerTime, log) {
     return (dispatch) => {

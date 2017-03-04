@@ -5,6 +5,7 @@ export function clickedPause(paused) {
     }
 }
 
+/* this timer is updated every 100ms / 0.1s */
 export function updateTimer(currentAnswerTime, increment) {
     return {
         type: "UPDATE_TIMER",

@@ -35,14 +35,12 @@ const historyReducer = (state = initialHistoryState, action) => {
             }
             break;
         case "SCORES_FETCH_SUCCESS":
-            console.log(action);
             state = {
                 ...state,
                 playerId: action.payload.playerId,
                 scores: action.payload.scores,
                 loading: false,
             }
-            console.log("new state", state);
             break;
         case "FORM_SUBMIT":
             state = {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const $ = require('jquery'); //need jquery to handle bootrap modals, please forgive me
+const $ = require('jquery'); //need jquery to handle bootrap modals
 
 import StartButton from './StartButton.js';
 

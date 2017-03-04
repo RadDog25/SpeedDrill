@@ -21,11 +21,8 @@ class App extends Component {
       <div className={/* apply colored backgound when competing */`myWrapper ${this.props.competing ? "myCompeting" : ""}`} >
         <div className="container" >
           <StartGameModal />
-            <EndCompeteModal />
-
-
-            <EndPracticeModal />
-
+          <EndCompeteModal />
+          <EndPracticeModal />
           <SubmitUsernameModal />
           <h1 className="title" >
             <span className="glyphicon glyphicon-flash" aria-hidden="true"></span>

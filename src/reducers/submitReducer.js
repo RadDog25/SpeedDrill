@@ -1,5 +1,3 @@
-//import submitUsername from '../helpers/submitUsername.js'; nothing here yet
-
 const initialSubmitState = {
     username: "",
     submitted: false,
@@ -18,7 +16,6 @@ const submitReducer = (state = initialSubmitState, action) => {
                 ...state,
                 submitted: true,
             }
-            console.log("submitted", state.submitted);
             break;
         case "CLICKED_PRACTICE_MODE":
         case "CLICKED_COMPETE_MODE":

@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 import { clickedPause, updateTimer } from '../actions/playStateActions.js';
 
+import Loader from './Loader.js';
+
 class Question extends Component {
     componentDidMount() {
         /* after timer mounts, increment the clock every 1 second as long as the game is not paused */
@@ -39,9 +41,15 @@ class Question extends Component {
                 </div>
                 {/* if transitioning then the answer is shown in bold */}
                 <h1>
-                    {this.props.question}
-                    { /* if transitioning and the class is set to myCorrect or myIncorrect, then show the answer during transition */
-                        this.props.transitioning && this.props.questionStyle !== "myDropdownClick" ? <b>{" " + this.props.correctAnswer}</b> : ""}
+                    { (this.props.transitioning && this.props.questionStyle === "myDropdownClick") && 
+                        <Loader />
+                    }
+                    { (this.props.transitioning && ["myCorrect", "myIncorrect"].indexOf(this.props.questionStyle) !== -1 ) &&
+                        this.props.question + " " + this.props.correctAnswer
+                    }
+                    { !this.props.transitioning &&
+                        this.props.question
+                    }
                 </h1>
             </div>
         );

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-const $ = require('jquery'); //need jquery to handle bootrap modals, please forgive me
+const $ = require('jquery'); //need jquery to handle bootrap modals
 
 import { clickedRestart, transitionCompleted } from '../actions/playStateActions.js';
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 class Highscore extends Component {
     render() {
-        return ( // take the highscore array and map it to the DOM
+        return (
             <table className="table table-striped" >
                 <tbody>
                     <tr>
@@ -12,6 +12,7 @@ class Highscore extends Component {
                         <th>Score</th>
                         <th>Unit Time</th>
                     </tr>
+                    {/* the code below takes our scores, assigns it a rank, removes scoes not in top 5 but not the user, then renders to DOM */}
                     {
                         this.props.scores &&
                         this.props.scores.map((score, index) => {
