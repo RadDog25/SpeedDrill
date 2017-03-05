@@ -23,7 +23,7 @@ class Answer extends Component {
             );
             //have the transitionCompleted function call itself after a delay
             setTimeout(() => {
-                if (this.props.numQuestionsAnswered >= 20) { //change back to 2 for testing
+                if (this.props.numQuestionsAnswered >= 2) { //change back to 20 for production
                     this.props.gameOver();
                     this.props.requestScores(
                         this.props.pastCorrectAnswers,
