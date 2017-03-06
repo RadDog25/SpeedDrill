@@ -23,7 +23,6 @@ const playStateReducer = (state = initialPlayState, action) => {
                 ...state,
                 competing: action.type === "CLICKED_COMPETE_MODE" ? true : false,
                 transitioning: true,
-                questionStyle: "myDropdownClick",
                 isGameOver: false,
                 paused: false,
             }
@@ -38,7 +37,7 @@ const playStateReducer = (state = initialPlayState, action) => {
             state = {
                 ...state,
                 transitioning: true,
-                questionStyle: action.payload.isCorrect ? "myCorrect" : "myIncorrect",
+                questionStyle: action.payload.isCorrect ? "myQuestionCorrect" : "myQuestionIncorrect",
                 timerStyle: getTimerStyle(action.payload),
                 buttonStyles: getStyles(state.correctIndex, action.payload.index),
             }
@@ -48,7 +47,6 @@ const playStateReducer = (state = initialPlayState, action) => {
             state = {
                 ...state,
                 transitioning: true,
-                questionStyle: "myDropdownClick",
                 isGameOver: false,
             }
             break;

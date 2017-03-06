@@ -18,17 +18,19 @@ import Restart from './Restart.js';
 class App extends Component {
   render() {
     return (
-      <div className={/* apply colored backgound when competing */`myWrapper ${this.props.competing ? "myCompeting" : ""}`} >
+      <div className="myWrapper" >
         <div className="container" >
           <StartGameModal />
           <EndCompeteModal />
           <EndPracticeModal />
           <SubmitUsernameModal />
-          <h1 className="title" >
-            <span className="glyphicon glyphicon-flash" aria-hidden="true"></span>
-            Speed Drill
+          <div className={`title`}>
+            <h1 >
+              <span className={`glyphicon glyphicon-flash ${this.props.competing ? "myFlash" : ""}`} aria-hidden="true"></span>
+              Speed Drill
           <Restart />
-          </h1>
+            </h1>
+          </div>
           <div className="row">
             <div className="col-xs-6 col-md-3">
               <DropdownMenu title={this.props.settings.category} label="Category" lis={["Addition", "Subtraction", "Multiplication", "Division", "Random"]} />

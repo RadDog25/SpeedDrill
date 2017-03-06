@@ -17,9 +17,9 @@ export function getTimerStyle({ isCorrect, currentAnswerTime, averageAnswerTime 
         return ""; //if not correct dont change any styling
     }
     if (averageAnswerTime) { //if averageAnswerTime is not zero then proceed normally
-        return currentAnswerTime < averageAnswerTime ? "myCorrect" : "myIncorrect";
+        return currentAnswerTime < averageAnswerTime ? "myTimerCorrect" : "myTimerIncorrect";
     } //otherwise compare to target for first question;
-    return currentAnswerTime < target ? "myCorrect" : "myIncorrect";
+    return currentAnswerTime < target ? "myTimerCorrect" : "myTimerIncorrect";
 }
 
 //used in playStateReducer, brains behind question generation here

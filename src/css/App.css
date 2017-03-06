@@ -6,14 +6,12 @@
     transform: rotate(360deg); } }
 html body .myCog {
   color: #333;
-  font-size: 0.9em;
-  animation: spin 2s infinite linear; }
-html body .myWrapper {
-  height: 100%;
-  transition: background-color 1s ease-in-out;
-  background-color: white; }
-html body .myCompeting {
-  background-color: lightblue; }
+  height: 55px;
+  animation: spin 3s infinite linear;
+  /* at 768 bootstrap enlarges the jumbotron */ }
+  @media screen and (max-width: 768px) {
+    html body .myCog {
+      height: 33px; } }
 html body .container {
   /* srink the jumbotron question display for smaller devices like phones */
   /*modify the alert bootstrap class */
@@ -51,13 +49,26 @@ html body .container {
   html body .container .modal-footer .myStartGame, html body .container .modal-footer .myEndGame {
     margin-bottom: 10px; }
   html body .container .title {
+    border: 2px solid #eeeeee;
+    border-radius: 10px;
+    background-color: #eeeeee;
+    margin-top: 5px;
     font-size: 2em;
     font-family: 'Lobster', cursive; }
+    html body .container .title h1 {
+      margin: 10px; }
+      html body .container .title h1 .myFlash {
+        transition: color 2s ease-in-out;
+        color: red; }
     html body .container .title .restartTest {
-      font-size: 1em;
+      background-color: #d6d6d6;
+      font-size: 0.5em;
       float: right;
-      color: #333; }
+      border-radius: 20px; }
+      html body .container .title .restartTest .glyphicon .glyphicon-repeat {
+        color: #333; }
   html body .container .jumbotron {
+    border: 2px solid #eee;
     margin-top: 30px;
     transition: background-color ease-in-out 0.25s;
     text-align: center; }
@@ -81,15 +92,21 @@ html body .container {
     display: inline-block;
     margin-right: 10px; }
     html body .container .scoreAlert .glyphicon {
-      float: right; }
+      float: right;
+      top: 3px; }
   html body .container .alert-info {
     width: 90px; }
-  html body .container .myCorrect {
+  html body .container .myCorrect, html body .container .myQuestionCorrect, html body .container .myTimerCorrect {
     background-color: #dff0d8;
     color: #468847; }
-  html body .container .myIncorrect {
+  html body .container .myIncorrect, html body .container .myQuestionIncorrect, html body .container .myTimerIncorrect {
     background-color: #f2dede;
     color: #a94442; }
+  html body .container .myTimerCorrect {
+    background-color: #d4e4cd;
+    border-color: green; }
+  html body .container .myTimerIncorrect {
+    border-color: red; }
   html body .container .myDropdownClick {
     background-color: #d9edf7;
     color: #31708f; }

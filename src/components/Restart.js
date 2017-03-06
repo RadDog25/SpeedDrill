@@ -8,13 +8,17 @@ import { clickedRestart, transitionCompleted } from '../actions/playStateActions
 
 class Restart extends Component {
     handleClick() {
-        $('#StartGameModal').modal({ backdrop: "static", keyboard: false, show: true});
+        $('#StartGameModal').modal({ backdrop: "static", keyboard: false, show: true });
     }
     render() {
         return (
+            /*
             <a className="restartTest" onClick={this.handleClick.bind(this)} href="#" data-toggle="tooltip" data-placement="bottom" title="Restart Quiz" >
                 <span className="glyphicon glyphicon-repeat" aria-hidden="true"></span>
-            </a>
+            </a> */
+            <button className="btn restartTest" onClick={ this.handleClick.bind(this) } data-toggle="tooltip" data-placement="bottom" title= "Restart Quiz"  >
+                <span className="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+            </button >
         );
     }
 }

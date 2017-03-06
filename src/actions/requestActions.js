@@ -30,7 +30,7 @@ export function scoresFetchSuccess(data) {
 
 /* this will be our development ajax call */
 
-/*
+
 export function requestScores(pastCorrectAnswers, averageAnswerTime, log) {
     return (dispatch) => {
         dispatch(scoresAreLoading()); //about to begin
@@ -95,10 +95,11 @@ export function requestScores(pastCorrectAnswers, averageAnswerTime, log) {
         }, 2000);
     }
 }
-*/
+
 
 
 /* And this is the production call */
+/*
 
 export function requestScores(pastCorrectAnswers, averageAnswerTime, log) {
     return (dispatch) => {
@@ -110,7 +111,7 @@ export function requestScores(pastCorrectAnswers, averageAnswerTime, log) {
                 key: "rad777dog777X",
                 score: 5 * pastCorrectAnswers,
                 time: averageAnswerTime,
-                log: log.toString(),
+                log: JSON.stringify(log),
             },
             success: (data) => {
                 dispatch(scoresFetchSuccess(data));
@@ -121,3 +122,5 @@ export function requestScores(pastCorrectAnswers, averageAnswerTime, log) {
         });
     }
 }
+
+*/

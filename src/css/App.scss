@@ -13,16 +13,12 @@ html {
     body {
         .myCog {
             color: #333;
-            font-size: 0.9em;
-            animation: spin 2s infinite linear;
-        }
-        .myWrapper {
-            height: 100%;
-            transition: background-color 1s ease-in-out;
-            background-color: white;
-        }
-        .myCompeting {
-            background-color: lightblue;
+            height: 55px;
+            animation: spin 3s infinite linear;
+            /* at 768 bootstrap enlarges the jumbotron */
+            @media screen and (max-width: 768px) {
+                height: 33px;
+            }
         }
         .container {
             .modal-header {
@@ -80,15 +76,32 @@ html {
                 }
             }
             .title {
+                border: 2px solid rgb(238, 238, 238);
+                border-radius: 10px;
+                background-color: rgb(238, 238, 238);
+                margin-top: 5px;
                 font-size: 2em;
                 font-family: 'Lobster', cursive;
+                h1 {
+                    margin: 10px;
+                    .myFlash {
+                        transition: color 2s ease-in-out;
+                        //color: #a94442;
+                        color: red;
+                    }
+                }
                 .restartTest {
-                    font-size: 1em;
+                    background-color: 0.9 * #eeeeee;
+                    font-size: 0.5em;
                     float: right;
-                    color: #333
+                    border-radius: 20px;
+                    .glyphicon .glyphicon-repeat {
+                        color: #333;
+                    }
                 }
             }
             .jumbotron {
+                border: 2px solid #eee;
                 margin-top: 30px;
                 transition: background-color ease-in-out 0.25s;
                 text-align: center;
@@ -121,6 +134,7 @@ html {
                 margin-right: 10px;
                 .glyphicon {
                     float: right;
+                    top: 3px;
                 }
             }
             .alert-info {
@@ -129,11 +143,26 @@ html {
             /* myCorrect and .myIncorrect change the color of the answer buttons and question jumbotron depending on the validity of the users answer */
             .myCorrect {
                 background-color: #dff0d8;
-                color: #468847;   
+                color: #468847;
+            }
+            .myQuestionCorrect {
+                @extend .myCorrect;
+            }
+            .myQuestionIncorrect {
+                @extend .myIncorrect;
             }
             .myIncorrect {
                 background-color: #f2dede;
-                color: #a94442; 
+                color: #a94442;
+            }
+            .myTimerCorrect {
+                @extend .myCorrect;
+                background-color: 0.95 * #dff0d8;
+                border-color: green;
+            }
+            .myTimerIncorrect {
+                @extend .myIncorrect;
+                border-color: red;
             }
             .myDropdownClick {
                 background-color: #d9edf7;

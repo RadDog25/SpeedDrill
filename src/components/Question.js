@@ -41,10 +41,10 @@ class Question extends Component {
                 </div>
                 {/* if transitioning then the answer is shown in bold */}
                 <h1>
-                    { (this.props.transitioning && this.props.questionStyle === "myDropdownClick") && 
+                    { (this.props.transitioning && ["myQuestionCorrect", "myQuestionIncorrect"].indexOf(this.props.questionStyle) === -1 ) && 
                         <Loader />
                     }
-                    { (this.props.transitioning && ["myCorrect", "myIncorrect"].indexOf(this.props.questionStyle) !== -1 ) &&
+                    { (this.props.transitioning && ["myQuestionCorrect", "myQuestionIncorrect"].indexOf(this.props.questionStyle) !== -1 ) &&
                         this.props.question + " " + this.props.correctAnswer
                     }
                     { !this.props.transitioning &&
