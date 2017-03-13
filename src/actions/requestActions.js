@@ -30,7 +30,7 @@ export function scoresFetchSuccess(data) {
 
 /* this will be our development ajax call */
 
-
+/*
 export function requestScores(pastCorrectAnswers, averageAnswerTime, log) {
     return (dispatch) => {
         dispatch(scoresAreLoading()); //about to begin
@@ -95,11 +95,11 @@ export function requestScores(pastCorrectAnswers, averageAnswerTime, log) {
         }, 2000);
     }
 }
-
+*/
 
 
 /* And this is the production call */
-/*
+
 
 export function requestScores(pastCorrectAnswers, averageAnswerTime, log) {
     return (dispatch) => {
@@ -122,5 +122,3 @@ export function requestScores(pastCorrectAnswers, averageAnswerTime, log) {
         });
     }
 }
-
-*/

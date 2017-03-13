@@ -12,11 +12,7 @@ class Restart extends Component {
     }
     render() {
         return (
-            /*
-            <a className="restartTest" onClick={this.handleClick.bind(this)} href="#" data-toggle="tooltip" data-placement="bottom" title="Restart Quiz" >
-                <span className="glyphicon glyphicon-repeat" aria-hidden="true"></span>
-            </a> */
-            <button className="btn restartTest" onClick={ this.handleClick.bind(this) } data-toggle="tooltip" data-placement="bottom" title= "Restart Quiz"  >
+            <button className="btn restartTest" onClick={ this.handleClick.bind(this) } data-toggle="tooltip" data-placement="bottom" title="Restart Quiz"  >
                 <span className="glyphicon glyphicon-repeat" aria-hidden="true"></span>
             </button >
         );
